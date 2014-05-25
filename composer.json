@@ -18,7 +18,14 @@
         "sensio/distribution-bundle": "~2.3",
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "behat/behat": "~3.0@dev",
+        "behat/mink-extension": "~2.0@dev",
+        "behat/mink": "~1.6@dev",
+        "behat/mink-browserkit-driver": "dev-master",
+        "knplabs/friendly-contexts": "dev-master",
+        "behat/mink-goutte-driver": "dev-master",
+        "behat/mink-selenium2-driver": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
