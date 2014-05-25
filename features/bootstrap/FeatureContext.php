@@ -6,7 +6,7 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 
 /**
- * Behat context class.
+ * Mink context class.
  */
 class FeatureContext extends MinkContext
 {
