@@ -1,0 +1,4 @@
+open_wines_web_app:
+    resource: "@OpenWinesWebAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
