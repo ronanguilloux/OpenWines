@@ -5,4 +5,4 @@ Feature: website
 
   Scenario: Searching for a page that does exist
     Given I am on "/"
-    Then I should see "openwines.org"
+    Then I should see "OpenWines.org"
