@@ -1,3 +1,17 @@
 open_wines_web_app_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: OpenWinesWebAppBundle:Default:index }
+    pattern: /.{_format} #cf. prefix
+    defaults:
+        _controller: 'OpenWinesWebAppBundle:Default:index'
+        _format: html
+    requirements:
+        _method: GET
+        _format: html|json|xml
+
+open_wines_web_app_regions:
+    pattern: /regions.{_format} #cf. prefix
+    defaults:
+        _controller: 'OpenWinesWebAppBundle:Default:regions'
+        _format: html
+    requirements:
+        _method: GET
+        _format: html|json|xml

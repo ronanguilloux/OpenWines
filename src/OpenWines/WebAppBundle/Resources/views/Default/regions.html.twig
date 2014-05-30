@@ -1,0 +1,7 @@
+{% if  0 < regions|length %}
+{% for region in regions %}
+    <li>{{ region.getName }}</li>
+{% endfor %}
+{% else %}
+<p>{{ 'No regions found'|trans }}</p>
+{% endif %}

@@ -1,1 +1,7 @@
-Hello OpenWines.org!
+{% if  0 > menu|length %}
+    {% for item in menu %}
+        <li>{{ item.getName }}</li>
+    {% endfor %}
+{% else %}
+    <p>{{ 'No menu item found'|trans }}</p>
+{% endif %}

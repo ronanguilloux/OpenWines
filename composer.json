@@ -25,7 +25,8 @@
         "behat/mink-browserkit-driver": "dev-master",
         "knplabs/friendly-contexts": "dev-master",
         "behat/mink-goutte-driver": "dev-master",
-        "behat/mink-selenium2-driver": "dev-master"
+        "behat/mink-selenium2-driver": "dev-master",
+        "jms/serializer-bundle": "*"
     },
     "scripts": {
         "post-install-cmd": [

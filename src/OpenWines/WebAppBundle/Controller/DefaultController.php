@@ -4,10 +4,37 @@ namespace OpenWines\WebAppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class DefaultController
+ * @package OpenWines\WebAppBundle\Controller
+ */
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+
+    /**
+     * indexAction
+     *
+     * @return Array
+     */
+    public function regionsAction()
     {
-        return $this->render('OpenWinesWebAppBundle:Default:index.html.twig', array('name' => $name));
+        $regions = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OpenWinesWebAppBundle:Region')
+            ->findAllOrderByName();
+
+        return ['regions' => $regions];
     }
+
+    /**
+     * indexAction
+     *
+     * @return Array
+     */
+    public function indexAction()
+    {
+        return ['menu' => ['/regions']];
+    }
+
 }
