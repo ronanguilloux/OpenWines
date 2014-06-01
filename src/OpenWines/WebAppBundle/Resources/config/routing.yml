@@ -1,5 +1,5 @@
 open_wines_web_app_homepage:
-    pattern: /.{_format} #cf. prefix
+    pattern: /index.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:index'
         _format: html
@@ -8,10 +8,20 @@ open_wines_web_app_homepage:
         _format: html|json|xml
 
 open_wines_web_app_regions:
-    pattern: /regions.{_format} #cf. prefix
+    pattern: /regions.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:regions'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
+
+open_wines_web_app_region:
+    pattern: /regions/{id}.{_format}
+    defaults:
+        _controller: 'OpenWinesWebAppBundle:Default:region'
+        _format: html
+    requirements:
+        _method: GET
+        _format: html|json|xml
+        id: \d+

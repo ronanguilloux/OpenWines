@@ -6,3 +6,8 @@ Feature: website
   Scenario: Found a menu to use the website
     Given I am on "/"
     Then I should see "menu"
+
+  Scenario: Found a menu to use the website
+    Given I am on "/regions"
+    Then I should see "Loire"
+

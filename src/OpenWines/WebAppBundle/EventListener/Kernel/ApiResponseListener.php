@@ -37,6 +37,9 @@ class ApiResponseListener
         $controller = $event->getRequest()->attributes->get('_controller');
 
         if('html' === $format) {
+            if(!is_array($data)){
+                $data = ['data', $data];
+            }
             $template = $this->guessTemplateName($controller);
             $content  = $this->twig->render($template, $data);
             $response = new Response($content, 200);

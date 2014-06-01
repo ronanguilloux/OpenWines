@@ -11,9 +11,16 @@ namespace OpenWines\WebAppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
 
 
 /**
+ * /**
+ * @Serializer\XmlRoot("user")
+ *
+ * @Hateoas\Relation("self", href = "expr('/regions/' ~ object.getId() ~'.json')")
+ * @Hateoas\Relation("more", href = "expr(object.getMore())")
+ *
  * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\RegionRepository")
  * @ORM\Table(name="region")
  */
@@ -38,7 +45,13 @@ Class Region
     private $description;
 
     /**
+     * @ORM\OneToMany(targetEntity="AOC", mappedBy="region")
+     **/
+    private $AOCs;
+
+    /**
      * @ORM\Column(name="more", type="string", nullable=true)
+     * @Serializer\Exclude because we list this as a HATEOAS relation
      */
     private $more;
 
@@ -46,6 +59,13 @@ Class Region
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
+
+    /**
+     * .ctor()
+     */
+    public function __construct() {
+        $this->AOCs = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -147,5 +167,38 @@ Class Region
     public function getMore()
     {
         return $this->more;
+    }
+
+    /**
+     * Add AOCs
+     *
+     * @param \OpenWines\WebAppBundle\Entity\AOC $aOCs
+     * @return Region
+     */
+    public function addAOC(\OpenWines\WebAppBundle\Entity\AOC $aOCs)
+    {
+        $this->AOCs[] = $aOCs;
+
+        return $this;
+    }
+
+    /**
+     * Remove AOCs
+     *
+     * @param \OpenWines\WebAppBundle\Entity\AOC $aOCs
+     */
+    public function removeAOC(\OpenWines\WebAppBundle\Entity\AOC $aOCs)
+    {
+        $this->AOCs->removeElement($aOCs);
+    }
+
+    /**
+     * Get AOCs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAOCs()
+    {
+        return $this->AOCs;
     }
 }

@@ -15,22 +15,22 @@ abstract class BaseController extends Controller
 {
 
     /**
-     * buildResponse
+     * getBaseUrl
      *
-     * @param mixed $subject: templatePath or data to serialize
-     * @return Response
+     * @param Request $request
+     *
+     * @return string
      */
-    public function buildResponse($subject, array $arguments = [], $format = 'html', $responseCode = 200)
+    protected function getBaseUrl(Request $request)
     {
-        if('html' === $format) {
-            return $this->render($subject, $arguments);
+        $kernel = $this->get('kernel');
+        $kernel->getEnvironment(); // prod, dev, test
+        $baseUrl = $request->getSchemeAndHttpHost();
+        if('dev' === $kernel->getEnvironment()) { // prod, dev, test
+            $baseUrl .= "/app_dev.php";
         }
 
-        return new Response(
-            $this->get('jsm_serializer')->serialize($subject, $format),
-            $responseCode,
-            ['Content-Type'] => 'json' === $format ? 'application/json' : 'application/xml']
-        );
+        return $baseUrl;
     }
 
 }

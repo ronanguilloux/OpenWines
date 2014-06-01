@@ -1,12 +1,14 @@
 default:
   suites:
     default:
+      parameters:
+        base_url: http://openwines
       contexts:
         - Knp\FriendlyContexts\Context\MinkContext
         - Knp\FriendlyContexts\Context\ApiContext
   extensions:
     Behat\MinkExtension:
-      base_url: http://openwines/app_dev.php
+      base_url: http://openwines
       sessions:
         default:
           goutte: ~

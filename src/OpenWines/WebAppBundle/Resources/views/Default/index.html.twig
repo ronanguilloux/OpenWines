@@ -1,7 +1,9 @@
-{% if  0 > menu|length %}
-    {% for item in menu %}
-        <li>{{ item.getName }}</li>
+{% if  0 < apis|length %}
+    <ul>
+    {% for item in apis %}
+        <li>{{ item.label }}: <a href="{{ item.href }}">{{ item.href }}</a></li>
     {% endfor %}
+    </ul>
 {% else %}
-    <p>{{ 'No menu item found'|trans }}</p>
+    <p>{{ 'No APIs found'|trans }}</p>
 {% endif %}
