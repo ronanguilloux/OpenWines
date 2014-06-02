@@ -27,11 +27,22 @@ region:
         id: \d+
 
 Aocs:
-    pattern: /regions/{id}/aocs.{_format}
+    pattern: /regions/{regionId}/aocs.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:Aocs'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
+        regionId: \d+
+
+Aoc:
+    pattern: /regions/{regionId}/aocs/{id}.{_format}
+    defaults:
+        _controller: 'OpenWinesWebAppBundle:Default:Aoc'
+        _format: html
+    requirements:
+        _method: GET
+        _format: html|json|xml
+        regionId: \d+
         id: \d+

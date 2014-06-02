@@ -71,5 +71,50 @@ class DefaultController extends BaseController
             ->find($id);
     }
 
+    /**
+     * AcosAction
+     *
+     * @param int $regionId
+     *
+     * @return Array data
+     */
+    public function AocsAction($regionId)
+    {
+        $region = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OpenWinesWebAppBundle:Region')
+            ->find($regionId)
+        ;
+        $aocs = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OpenWinesWebAppBundle:AOC')
+            ->findByRegion($region)
+        ;
+
+        return ['aocs' => $aocs ];
+    }
+
+    /**
+     * AcoAction
+     *
+     * @param int $regionId
+     * @param int $id
+     *
+     * @return Array data
+     */
+    public function AocAction($regionId, $id)
+    {
+        $aoc = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OpenWinesWebAppBundle:AOC')
+            ->find($id)
+        ;
+
+        return ['aoc' => $aoc];
+    }
+
 
 }

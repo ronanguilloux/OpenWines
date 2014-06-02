@@ -11,11 +11,36 @@ namespace OpenWines\WebAppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
 
 
 /**
- * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\AppellationRepository")
+ * @Hateoas\Relation(
+ *    "parent",
+ *    href = @Hateoas\Route(
+ *      "Aocs",
+ *      parameters = {
+ *          "regionId"      = "expr(object.getRegion().getId())",
+ *          "_format" = "json"
+ *      },
+ *      absolute = true
+ *    )
+ * )
+ * @Hateoas\Relation(
+ *   name = "self",
+ *   href = @Hateoas\Route(
+ *      "Aoc",
+ *      parameters = {
+ *          "id" = "expr(object.getId())",
+ *          "regionId" = "expr(object.getRegion().getId())",
+ *          "_format"  = "json"
+ *      },
+ *      absolute = true
+ *     )
+ * )
+ * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\AOCRepository")
  * @ORM\Table(name="AOC")
+ * @ORM\HasLifecycleCallbacks
  */
 Class AOC
 {
@@ -50,6 +75,27 @@ Class AOC
     private $createdAt;
 
     /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function updatedTimestamps()
+    {
+        $this->setUpdatedAt(new \DateTime('now'));
+
+        if ($this->getCreatedAt() == null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
+    }
+
+    /** All the rest below comes from Doctrine Entity Generator: */
+
+    /**
      * Get id
      *
      * @return integer 
@@ -63,7 +109,7 @@ Class AOC
      * Set name
      *
      * @param string $name
-     * @return AppellationType
+     * @return AOC
      */
     public function setName($name)
     {
@@ -83,26 +129,26 @@ Class AOC
     }
 
     /**
-     * Set createdAt
+     * Set type
      *
-     * @param \DateTime $createdAt
-     * @return AppellationType
+     * @param string $type
+     * @return AOC
      */
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setType($type)
     {
-        $this->createdAt = $createdAt;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get type
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getCreatedAt()
+    public function getType()
     {
-        return $this->createdAt;
+        return $this->type;
     }
 
     /**
@@ -129,25 +175,48 @@ Class AOC
     }
 
     /**
-     * Set type
+     * Set createdAt
      *
-     * @param string $type
+     * @param \DateTime $createdAt
      * @return AOC
      */
-    public function setType($type)
+    public function setCreatedAt($createdAt)
     {
-        $this->type = $type;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get createdAt
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getType()
+    public function getCreatedAt()
     {
-        return $this->type;
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return AOC
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
