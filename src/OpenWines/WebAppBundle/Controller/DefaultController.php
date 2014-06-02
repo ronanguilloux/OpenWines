@@ -23,7 +23,6 @@ class DefaultController extends BaseController
      */
     public function indexAction(Request $request)
     {
-
         $format         = $request->attributes->get('_format');
         $hateoasRoutes  = ['regions'];
         $baseUrl        = $this->getBaseUrl($request);

@@ -12,14 +12,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use Hateoas\Configuration\Annotation as Hateoas;
+use Hateoas\Helper\LinkHelper;
 
 
 /**
  * /**
  * @Serializer\XmlRoot("user")
  *
- * @Hateoas\Relation("self", href = "expr('/regions/' ~ object.getId() ~'.json')")
- * @Hateoas\Relation("more", href = "expr(object.getMore())")
+ * @Hateoas\Relation(
+ *   "self",
+ *   href = @Hateoas\Route("region", parameters = {"id" = "expr(object.getId())"})
+ * )
  *
  * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\RegionRepository")
  * @ORM\Table(name="region")
