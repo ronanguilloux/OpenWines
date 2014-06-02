@@ -16,17 +16,37 @@ use Hateoas\Helper\LinkHelper;
 
 
 /**
- * /**
  * @Serializer\XmlRoot("user")
  *
  * @Hateoas\Relation(
- *   "self",
- *   href = @Hateoas\Route("region", parameters = {"id" = "expr(object.getId())"})
+ *    "self",
+ *    href = @Hateoas\Route(
+ *      "region",
+ *      parameters = {
+ *          "id"      = "expr(object.getId())",
+ *          "_format" = "json"
+ *      },
+ *      absolute = true
+ *    )
  * )
- *
+ * @Hateoas\Relation(
+ *   name = "aocs",
+ *   href = @Hateoas\Route(
+ *      "Aocs",
+ *      parameters = {
+ *          "id"      = "expr(object.getId())",
+ *          "_format" = "json"
+ *      },
+ *      absolute = true
+ *     )
+ * )
+ * @Hateoas\Relation(
+ *   name = "more",
+ *   href = "expr(object.getMore())"
+ * )
  * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\RegionRepository")
  * @ORM\Table(name="region")
- */
+ **/
 Class Region
 {
     /**
@@ -48,9 +68,10 @@ Class Region
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="AOC", mappedBy="region")
+     * @ORM\OneToMany(targetEntity="aoc", mappedBy="region")
+     * @Serializer\Exclude because we list this as a HATEOAS relation
      **/
-    private $AOCs;
+    private $aocs;
 
     /**
      * @ORM\Column(name="more", type="string", nullable=true)
@@ -67,7 +88,7 @@ Class Region
      * .ctor()
      */
     public function __construct() {
-        $this->AOCs = new ArrayCollection();
+        $this->aocs = new ArrayCollection();
     }
 
     /**
@@ -173,26 +194,26 @@ Class Region
     }
 
     /**
-     * Add AOCs
+     * Add AOC
      *
-     * @param \OpenWines\WebAppBundle\Entity\AOC $aOCs
+     * @param \OpenWines\WebAppBundle\Entity\Aoc $aoc
      * @return Region
      */
-    public function addAOC(\OpenWines\WebAppBundle\Entity\AOC $aOCs)
+    public function addaoc(\OpenWines\WebAppBundle\Entity\aoc $aoc)
     {
-        $this->AOCs[] = $aOCs;
+        $this->aocs[] = $aoc;
 
         return $this;
     }
 
     /**
-     * Remove AOCs
+     * Remove AOC
      *
-     * @param \OpenWines\WebAppBundle\Entity\AOC $aOCs
+     * @param \OpenWines\WebAppBundle\Entity\Aoc $aoc
      */
-    public function removeAOC(\OpenWines\WebAppBundle\Entity\AOC $aOCs)
+    public function removeAoc(\OpenWines\WebAppBundle\Entity\Aoc $aoc)
     {
-        $this->AOCs->removeElement($aOCs);
+        $this->aocs->removeElement($aoc);
     }
 
     /**
@@ -200,8 +221,8 @@ Class Region
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAOCs()
+    public function getAocs()
     {
-        return $this->AOCs;
+        return $this->aocs;
     }
 }

@@ -25,3 +25,13 @@ region:
         _method: GET
         _format: html|json|xml
         id: \d+
+
+Aocs:
+    pattern: /regions/{id}/aocs.{_format}
+    defaults:
+        _controller: 'OpenWinesWebAppBundle:Default:Aocs'
+        _format: html
+    requirements:
+        _method: GET
+        _format: html|json|xml
+        id: \d+
