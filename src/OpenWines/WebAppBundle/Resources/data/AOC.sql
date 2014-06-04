@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 01, 2014 at 11:25 PM
+-- Generation Time: Jun 04, 2014 at 11:08 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -28,23 +28,24 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `AOC` (
 `id` int(11) NOT NULL,
-  `region_id` int(11) DEFAULT NULL,
+  `vignoble_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `AOC`
 --
 
-INSERT INTO `AOC` (`id`, `region_id`, `name`, `type`, `created_at`) VALUES
-(1, 7, 'Château-chalon', 'géographique', '2014-06-02 00:00:00'),
-(2, 7, 'Arbois', 'géographique', '2014-06-02 00:00:00'),
-(3, 7, 'l’Étoile', 'géographique', '2014-06-02 00:00:00'),
-(4, 7, 'Côtes-du-jura', 'géographique', '2014-06-02 00:00:00'),
-(5, 7, 'Crémant du Jura', 'produit', '2014-06-02 00:00:00'),
-(6, 7, 'Macvin du Jura', 'produit', '2014-06-02 00:00:00');
+INSERT INTO `AOC` (`id`, `vignoble_id`, `name`, `type`, `created_at`, `updated_at`) VALUES
+(1, 7, 'Château-chalon', 'géographique', '2014-06-02 00:00:00', '2014-06-02 00:00:00'),
+(2, 7, 'Arbois', 'géographique', '2014-06-02 00:00:00', '2014-06-02 00:00:00'),
+(3, 7, 'l’Étoile', 'géographique', '2014-06-02 00:00:00', '2014-06-02 00:00:00'),
+(4, 7, 'Côtes-du-jura', 'géographique', '2014-06-02 00:00:00', '2014-06-02 00:00:00'),
+(5, 7, 'Crémant du Jura', 'produit', '2014-06-02 00:00:00', '2014-06-02 00:00:00'),
+(6, 7, 'Macvin du Jura', 'produit', '2014-06-02 00:00:00', '2014-06-02 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -54,7 +55,7 @@ INSERT INTO `AOC` (`id`, `region_id`, `name`, `type`, `created_at`) VALUES
 -- Indexes for table `AOC`
 --
 ALTER TABLE `AOC`
- ADD PRIMARY KEY (`id`), ADD KEY `IDX_162D7D0598260155` (`region_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `IDX_162D7D055C794B00` (`vignoble_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -73,7 +74,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- Constraints for table `AOC`
 --
 ALTER TABLE `AOC`
-ADD CONSTRAINT `FK_162D7D0598260155` FOREIGN KEY (`region_id`) REFERENCES `region` (`id`);
+ADD CONSTRAINT `FK_162D7D055C794B00` FOREIGN KEY (`vignoble_id`) REFERENCES `vignoble` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

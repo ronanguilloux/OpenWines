@@ -24,7 +24,7 @@ class DefaultController extends BaseController
     public function indexAction(Request $request)
     {
         $format         = $request->attributes->get('_format');
-        $hateoasRoutes  = ['regions'];
+        $hateoasRoutes  = ['vignobles'];
         $baseUrl        = $this->getBaseUrl($request);
         $routes         = [];
         foreach($hateoasRoutes as $route) {
@@ -38,59 +38,59 @@ class DefaultController extends BaseController
     }
 
     /**
-     * regionsAction
+     * vignoblesAction
      *
      * @return Array data
      */
-    public function regionsAction()
+    public function vignoblesAction()
     {
-        $regions = $this
+        $vignobles = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:Region')
+            ->getRepository('OpenWinesWebAppBundle:Vignoble')
             ->findAllOrderByName();
 
 
 
-        return ['regions' => $regions];
+        return ['vignobles' => $vignobles];
     }
 
     /**
-     * regionsAction
+     * vignoblesAction
      *
      * @param int id
      *
      * @return Array data
      */
-    public function regionAction($id)
+    public function vignobleAction($id)
     {
         return $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:Region')
+            ->getRepository('OpenWinesWebAppBundle:Vignoble')
             ->find($id);
     }
 
     /**
      * AcosAction
      *
-     * @param int $regionId
+     * @param int $vignobleId
      *
      * @return Array data
      */
-    public function AocsAction($regionId)
+    public function AocsAction($vignobleId)
     {
-        $region = $this
+        $vignoble = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:Region')
-            ->find($regionId)
+            ->getRepository('OpenWinesWebAppBundle:Vignoble')
+            ->find($vignobleId)
         ;
         $aocs = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('OpenWinesWebAppBundle:AOC')
-            ->findByRegion($region)
+            ->findByVignoble($vignoble)
         ;
 
         return ['aocs' => $aocs ];
@@ -99,12 +99,12 @@ class DefaultController extends BaseController
     /**
      * AcoAction
      *
-     * @param int $regionId
+     * @param int $vignobleId
      * @param int $id
      *
      * @return Array data
      */
-    public function AocAction($regionId, $id)
+    public function AocAction($vignobleId, $id)
     {
         $aoc = $this
             ->getDoctrine()

@@ -4,10 +4,12 @@ Feature: website
   I need to be able to use the website
 
   Scenario: Found a menu to use the website
-    Given I am on "/"
-    Then I should see "menu"
+    Given I am on "/index.html"
+    Then the response status code should be 200
+    And I should see "vignobles"
 
   Scenario: Found a menu to use the website
-    Given I am on "/regions"
-    Then I should see "Loire"
+    Given I am on "/vignobles.html"
+    Then the response status code should be 200
+    And I should see "Jura"
 

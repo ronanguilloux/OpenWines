@@ -13,10 +13,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Class RegionRepository
+ * Class VignobleRepository
  * @package OpenWines\WebAppBundle\Repository
  */
-class RegionRepository extends BaseRepository
+class VignobleRepository extends BaseRepository
 {
 
     /**

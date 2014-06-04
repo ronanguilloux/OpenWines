@@ -7,19 +7,19 @@ homepage:
         _method: GET
         _format: html|json|xml
 
-regions:
-    pattern: /regions.{_format}
+vignobles:
+    pattern: /vignobles.{_format}
     defaults:
-        _controller: 'OpenWinesWebAppBundle:Default:regions'
+        _controller: 'OpenWinesWebAppBundle:Default:vignobles'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
 
-region:
-    pattern: /regions/{id}.{_format}
+vignoble:
+    pattern: /vignobles/{id}.{_format}
     defaults:
-        _controller: 'OpenWinesWebAppBundle:Default:region'
+        _controller: 'OpenWinesWebAppBundle:Default:vignoble'
         _format: html
     requirements:
         _method: GET
@@ -27,22 +27,22 @@ region:
         id: \d+
 
 Aocs:
-    pattern: /regions/{regionId}/aocs.{_format}
+    pattern: /vignobles/{vignobleId}/aocs.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:Aocs'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
-        regionId: \d+
+        vignobleId: \d+
 
 Aoc:
-    pattern: /regions/{regionId}/aocs/{id}.{_format}
+    pattern: /vignobles/{vignobleId}/aocs/{id}.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:Aoc'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
-        regionId: \d+
+        vignobleId: \d+
         id: \d+

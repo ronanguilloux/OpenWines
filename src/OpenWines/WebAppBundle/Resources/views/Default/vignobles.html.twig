@@ -1,0 +1,7 @@
+{% if  0 < vignobles|length %}
+{% for vignoble in vignobles %}
+    <li>{{ vignoble.getName }}: <a href="{{ '/vignobles/' ~ vignoble.getId }}">{{ '/vignobles/' ~ vignoble.getId }}</a></li>
+{% endfor %}
+{% else %}
+<p>{{ 'No vignobles found'|trans }}</p>
+{% endif %}

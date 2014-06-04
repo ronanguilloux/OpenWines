@@ -20,7 +20,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *    href = @Hateoas\Route(
  *      "Aocs",
  *      parameters = {
- *          "regionId"      = "expr(object.getRegion().getId())",
+ *          "vignobleId"      = "expr(object.getVignoble().getId())",
  *          "_format" = "json"
  *      },
  *      absolute = true
@@ -32,11 +32,15 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *      "Aoc",
  *      parameters = {
  *          "id" = "expr(object.getId())",
- *          "regionId" = "expr(object.getRegion().getId())",
+ *          "vignobleId" = "expr(object.getVignoble().getId())",
  *          "_format"  = "json"
  *      },
  *      absolute = true
  *     )
+ * )
+ * @Hateoas\Relation(
+ *   name = "more",
+ *   href = "expr(object.getMore())"
  * )
  * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\AOCRepository")
  * @ORM\Table(name="AOC")
@@ -53,10 +57,10 @@ Class AOC
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Region", inversedBy="AOCs")
-     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Vignoble", inversedBy="AOCs")
+     * @ORM\JoinColumn(name="vignoble_id", referencedColumnName="id")
      **/
-    private $region;
+    private $vignoble;
 
     /**
      * @ORM\Column
@@ -70,12 +74,20 @@ Class AOC
     private $type;
 
     /**
+     * @ORM\Column(name="more", type="string", nullable=true)
+     * @Serializer\Exclude because we list this as a HATEOAS relation
+     */
+    private $more;
+    
+    /**
+     * @var \DateTime
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
+     * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
 
@@ -152,26 +164,26 @@ Class AOC
     }
 
     /**
-     * Set region
+     * Set vignoble
      *
-     * @param \OpenWines\WebAppBundle\Entity\Region $region
+     * @param \OpenWines\WebAppBundle\Entity\Vignoble $vignoble
      * @return AOC
      */
-    public function setRegion(\OpenWines\WebAppBundle\Entity\Region $region = null)
+    public function setVignoble(\OpenWines\WebAppBundle\Entity\Vignoble $vignoble = null)
     {
-        $this->region = $region;
+        $this->vignoble = $vignoble;
 
         return $this;
     }
 
     /**
-     * Get region
+     * Get vignoble
      *
-     * @return \OpenWines\WebAppBundle\Entity\Region 
+     * @return \OpenWines\WebAppBundle\Entity\Vignoble
      */
-    public function getRegion()
+    public function getVignoble()
     {
-        return $this->region;
+        return $this->vignoble;
     }
 
     /**
@@ -218,5 +230,28 @@ Class AOC
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set more
+     *
+     * @param string $more
+     * @return AOC
+     */
+    public function setMore($more)
+    {
+        $this->more = $more;
+
+        return $this;
+    }
+
+    /**
+     * Get more
+     *
+     * @return string 
+     */
+    public function getMore()
+    {
+        return $this->more;
     }
 }

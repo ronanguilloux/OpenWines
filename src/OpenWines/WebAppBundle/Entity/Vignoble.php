@@ -19,7 +19,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *   name = "parent",
  *   href = @Hateoas\Route(
- *      "regions",
+ *      "vignobles",
  *      parameters = {
  *          "_format" = "json"
  *      },
@@ -29,7 +29,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *    "self",
  *    href = @Hateoas\Route(
- *      "region",
+ *      "vignoble",
  *      parameters = {
  *          "id"      = "expr(object.getId())",
  *          "_format" = "json"
@@ -42,7 +42,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *   href = @Hateoas\Route(
  *      "Aocs",
  *      parameters = {
- *          "regionId" = "expr(object.getId())",
+ *          "vignobleId" = "expr(object.getId())",
  *          "_format"  = "json"
  *      },
  *      absolute = true
@@ -52,11 +52,11 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *   name = "more",
  *   href = "expr(object.getMore())"
  * )
- * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\RegionRepository")
- * @ORM\Table(name="region")
+ * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\VignobleRepository")
+ * @ORM\Table(name="vignoble")
  * @ORM\HasLifecycleCallbacks
  **/
-Class Region
+Class Vignoble
 {
 
     /**
@@ -88,7 +88,7 @@ Class Region
     private $area; // Km2
 
     /**
-     * @ORM\OneToMany(targetEntity="AOC", mappedBy="region")
+     * @ORM\OneToMany(targetEntity="AOC", mappedBy="vignoble")
      * @Serializer\Exclude because we list this as a HATEOAS relation
      **/
     private $AOCs;
@@ -101,11 +101,13 @@ Class Region
 
     /**
      * @var \DateTime
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
+     * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
 
@@ -146,7 +148,7 @@ Class Region
      * Set name
      *
      * @param string $name
-     * @return Region
+     * @return Vignoble
      */
     public function setName($name)
     {
@@ -169,7 +171,7 @@ Class Region
      * Set description
      *
      * @param string $description
-     * @return Region
+     * @return Vignoble
      */
     public function setDescription($description)
     {
@@ -192,7 +194,7 @@ Class Region
      * Set departments
      *
      * @param string $departments
-     * @return Region
+     * @return Vignoble
      */
     public function setDepartments($departments)
     {
@@ -212,14 +214,14 @@ Class Region
      */
     public function getDepartments()
     {
-        return expoe('|', $this->departments);
+        return expolode('|', $this->departments);
     }
 
     /**
      * Set area
      *
      * @param string $area
-     * @return Region
+     * @return Vignoble
      */
     public function setArea($area)
     {
@@ -242,7 +244,7 @@ Class Region
      * Set more
      *
      * @param string $more
-     * @return Region
+     * @return Vignoble
      */
     public function setMore($more)
     {
@@ -265,7 +267,7 @@ Class Region
      * Add AOCs
      *
      * @param \OpenWines\WebAppBundle\Entity\AOC $aocs
-     * @return Region
+     * @return Vignoble
      */
     public function addAOC(\OpenWines\WebAppBundle\Entity\AOC $aocs)
     {

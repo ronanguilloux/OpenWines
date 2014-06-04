@@ -29,7 +29,7 @@ class TestCommand extends ContainerAwareCommand
     {
 
         $client = new Client();
-        $response = $client->request('GET', 'http://openwines/app_dev.php/regions.json', array(), array(), array('HTTP_CONTENT_TYPE' => 'application/json'));
+        $response = $client->request('GET', 'http://openwines/app_dev.php/vignobles.json', array(), array(), array('HTTP_CONTENT_TYPE' => 'application/json'));
         die(var_dump($response));
 
 

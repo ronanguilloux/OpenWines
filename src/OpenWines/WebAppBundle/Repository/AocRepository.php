@@ -26,14 +26,14 @@ class AocRepository extends BaseRepository
     /** F I N D E R S */
 
 
-    public function findByRegionOrderByName($regionId)
+    public function findByVignobleOrderByName($vignobleId)
     {
         $query = $this->getEntityManager()
             ->createQuery('
             SELECT a, r FROM OpenWinesWebAppBundle:AOC a
-            INNER JOIN a.region r
+            INNER JOIN a.vignoble r
             WHERE r.id = :id'
-            )->setParameter('id', (int)$regionId);
+            )->setParameter('id', (int)$vignobleId);
         try {
             return $query->getSingleResult();
         } catch (NoResultException $e) {
@@ -46,19 +46,19 @@ class AocRepository extends BaseRepository
 
 
     /**
-     * buildByRegion
+     * buildByVignoble
      *
      * @throws \InvalidArgumentException
      *
-     * @param int $regionId
+     * @param int $vignobleId
      * @param QueryBuilder $qb
      *
      * @return QueryBuilder
      */
-    protected function buildByRegion($regionId, QueryBuilder $qb = null)
+    protected function buildByVignoble($vignobleId, QueryBuilder $qb = null)
     {
-        if((int)$regionId < 0) {
-            throw new \InvalidArgumentException("regionId cannot be < 0.");
+        if((int)$vignobleId < 0) {
+            throw new \InvalidArgumentException("vignobleId cannot be < 0.");
         }
 
         if(null === $qb) {
@@ -66,7 +66,7 @@ class AocRepository extends BaseRepository
         }
 
         return $qb
-             ->andWhere($qb->expr()->in('region.id',$regionId))
+             ->andWhere($qb->expr()->in('vignoble.id',$vignobleId))
         ;
     }
 } 
