@@ -74,7 +74,7 @@ Class AOC
     private $type;
 
     /**
-     * @ORM\Column(name="more", type="string", nullable=true)
+     * @ORM\Column(name="more", type="text", nullable=true)
      * @Serializer\Exclude because we list this as a HATEOAS relation
      */
     private $more;

@@ -1,12 +1,24 @@
-/.idea/
-/web/bundles/
-/app/bootstrap.php.cache
-/app/cache/*
-/app/config/parameters.yml
-/app/logs/*
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
+web/uploads/*
+web/bundles/*
+
+# Configuration files
+app/config/parameters.ini
+app/config/parameters.yml
+
+# Composer
+composer.phar
+
+# Other
 /build/
-/vendor/
 /bin/
-/composer.phar
+/.idea/
+

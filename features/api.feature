@@ -19,7 +19,7 @@ Feature: api
     Then the response status code should be 200
     And the response should contain "grand terroir"
 
-  Scenario: Looking for a single AOC
+  Scenario: Looking for a single designation
     Given I am on "/vignobles/7/aocs.json"
     Then the response status code should be 200
     And the response should contain "Macvin"
