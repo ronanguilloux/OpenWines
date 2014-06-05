@@ -39,6 +39,18 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *     )
  * )
  * @Hateoas\Relation(
+ *   name = "cepages",
+ *   href = @Hateoas\Route(
+ *      "Cepages",
+ *      parameters = {
+ *          "vignobleId" = "expr(object.getVignoble().getId())",
+ *          "AOCId" = "expr(object.getId())",
+ *          "_format"  = "json"
+ *      },
+ *      absolute = true
+ *     )
+ * )
+ * @Hateoas\Relation(
  *   name = "more",
  *   href = "expr(object.getMore())"
  * )
@@ -74,6 +86,13 @@ Class AOC
     private $type;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Cepage", mappedBy="cepage")
+     * @Serializer\Exclude because we list this as a HATEOAS relation
+     **/
+    private $cepages;
+
+    /**
      * @ORM\Column(name="more", type="text", nullable=true)
      * @Serializer\Exclude because we list this as a HATEOAS relation
      */
@@ -90,6 +109,13 @@ Class AOC
      * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * .ctor()
+     */
+    public function __construct() {
+        $this->cepages = new ArrayCollection();
+    }
 
     /**
      *
@@ -184,6 +210,39 @@ Class AOC
     public function getVignoble()
     {
         return $this->vignoble;
+    }
+
+    /**
+     * Add cepages
+     *
+     * @param \OpenWines\WebAppBundle\Entity\Cepage $cepages
+     * @return AOC
+     */
+    public function addCepage(\OpenWines\WebAppBundle\Entity\Cepage $cepages)
+    {
+        $this->cepages[] = $cepages;
+
+        return $this;
+    }
+
+    /**
+     * Remove cepages
+     *
+     * @param \OpenWines\WebAppBundle\Entity\Cepage $cepages
+     */
+    public function removeCepage(\OpenWines\WebAppBundle\Entity\Cepage $cepages)
+    {
+        $this->cepages->removeElement($cepages);
+    }
+
+    /**
+     * Get cepages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCepages()
+    {
+        return $this->cepages;
     }
 
     /**

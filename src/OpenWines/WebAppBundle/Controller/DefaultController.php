@@ -116,5 +116,36 @@ class DefaultController extends BaseController
         return ['aoc' => $aoc];
     }
 
+    /**
+     * cepagesAction
+     *
+     * @param int $vignobleId
+     * @param int $AOCId
+     *
+     * @return Array data
+     */
+    public function cepagesAction($vignobleId, $AOCId)
+    {
+        $aoc = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OpenWinesWebAppBundle:AOC')
+            ->find($AOCId)
+        ;
+        $vignoble = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OpenWinesWebAppBundle:Vignoble')
+            ->find($vignobleId)
+        ;
+        $cepages = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OpenWinesWebAppBundle:Cepage')
+            ->findByAOC($AOCId)
+        ;
+
+        return ['cepages' => $cepages ];
+    }
 
 }

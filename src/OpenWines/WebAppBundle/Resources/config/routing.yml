@@ -46,3 +46,26 @@ Aoc:
         _format: html|json|xml
         vignobleId: \d+
         id: \d+
+
+Cepages:
+    pattern: /vignobles/{vignobleId}/aocs/{AOCId}/cepages.{_format}
+    defaults:
+        _controller: 'OpenWinesWebAppBundle:Default:Cepages'
+        _format: html
+    requirements:
+        _method: GET
+        _format: html|json|xml
+        vignobleId: \d+
+        AOCId: \d+
+
+Cepage:
+    pattern: /vignobles/{vignobleId}/aocs/{AOCid}/cepages/{id}.{_format}
+    defaults:
+        _controller: 'OpenWinesWebAppBundle:Default:Cepage'
+        _format: html
+    requirements:
+        _method: GET
+        _format: html|json|xml
+        vignobleId: \d+
+        AOCId: \d+
+        id: \d+

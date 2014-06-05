@@ -279,7 +279,7 @@ Class Vignoble
     /**
      * Remove AOCs
      *
-     * @param \OpenWines\WebAppBundle\Entity\AOC $aOCs
+     * @param \OpenWines\WebAppBundle\Entity\AOC $aocs
      */
     public function removeAOC(\OpenWines\WebAppBundle\Entity\AOC $aocs)
     {
