@@ -13,7 +13,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *    "parent",
  *    href = @Hateoas\Route(
- *      "Aocs",
+ *      "aocs",
  *      parameters = {
  *          "vignobleId"      = "expr(object.getAOC().getVignoble().getId())",
  *          "_format" = "json"
@@ -24,7 +24,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *   name = "self",
  *   href = @Hateoas\Route(
- *      "Aoc",
+ *      "aoc",
  *      parameters = {
  *          "vignobleId" = "expr(object.getAOC().getId())",
  *          "id" = "expr(object.getId())",

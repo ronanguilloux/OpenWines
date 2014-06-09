@@ -1,7 +1,12 @@
 {% if  0 < vignobles|length %}
-{% for vignoble in vignobles %}
-    <li>{{ vignoble.getName }}: <a href="{{ '/vignobles/' ~ vignoble.getId }}">{{ '/vignobles/' ~ vignoble.getId }}</a></li>
-{% endfor %}
+    <h1><a href="{{ url('vignobles') }}">Vignobles</a></h1>
+    <p><a href="{{ url('homepage') }}">Index</a></p>
+    <ul>
+    {% for vignoble in vignobles %}
+        {% set URL = url( 'vignoble', {'id': vignoble.getId} ) %}
+        <li>{{ vignoble.getName }}: <a href="{{ URL }}">{{ URL }}</a></li>
+    {% endfor %}
+    </ul>
 {% else %}
-<p>{{ 'No vignobles found'|trans }}</p>
+    <p>{{ 'No vignobles found'|trans }}</p>
 {% endif %}

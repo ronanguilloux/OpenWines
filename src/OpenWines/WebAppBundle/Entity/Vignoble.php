@@ -40,7 +40,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *   name = "aocs",
  *   href = @Hateoas\Route(
- *      "Aocs",
+ *      "aocs",
  *      parameters = {
  *          "vignobleId" = "expr(object.getId())",
  *          "_format"  = "json"
