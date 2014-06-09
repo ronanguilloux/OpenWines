@@ -94,7 +94,7 @@ Class Vignoble
     private $AOCs;
 
     /**
-     * @ORM\Column(name="more", type="string", nullable=true)
+     * @ORM\Column(name="more", type="text", nullable=true)
      * @Serializer\Exclude because we list this as a HATEOAS relation
      */
     private $more;
@@ -248,7 +248,10 @@ Class Vignoble
      */
     public function setMore($more)
     {
-        $this->more = $more;
+        if (!empty($more)) {
+            $this->more = sprintf("%s,", $this->more);
+        }
+        $this->more .= $more;
 
         return $this;
     }
@@ -256,10 +259,14 @@ Class Vignoble
     /**
      * Get more
      *
-     * @return string 
+     * @return mixed array or string
      */
     public function getMore()
     {
+        if (false !== strpos($this->more, ',')){
+            return explode(',', $this->more);
+        }
+
         return $this->more;
     }
 

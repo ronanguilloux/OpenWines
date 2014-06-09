@@ -127,7 +127,10 @@ class Cepage
      */
     public function setMore($more)
     {
-        $this->more = $more;
+        if (!empty($more)) {
+            $this->more = sprintf("%s,", $this->more);
+        }
+        $this->more .= $more;
 
         return $this;
     }
@@ -135,12 +138,17 @@ class Cepage
     /**
      * Get more
      *
-     * @return string 
+     * @return mixed array or string
      */
     public function getMore()
     {
+        if (false !== strpos($this->more, ',')){
+            return explode(',', $this->more);
+        }
+
         return $this->more;
     }
+
 
     /**
      * Set createdAt
