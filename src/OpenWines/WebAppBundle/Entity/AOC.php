@@ -93,6 +93,24 @@ Class AOC
     private $cepages;
 
     /**
+     * @ORM\Column(name="area", type="integer", nullable=true)
+     * ex: "7000" (in hectares)
+     */
+    private $area;
+
+    /**
+     * @ORM\Column(name="production", type="integer", nullable=true)
+     * ex: "317500" (in hectolitre)
+     */
+    private $production;
+
+    /**
+     * @ORM\Column(name="soil", type="string", nullable=true)
+     * ex: "argilo-calcaire,granitique"
+     */
+    private $soil;
+
+    /**
      * @ORM\Column(name="more", type="text", nullable=true)
      * @Serializer\Exclude because we list this as a HATEOAS relation
      */
@@ -319,5 +337,81 @@ Class AOC
         }
 
         return $this->more;
+    }
+
+    /**
+     * Set area
+     *
+     * @param string $area
+     * @return AOC
+     */
+    public function setArea($area)
+    {
+        $this->area = $area;
+
+        return $this;
+    }
+
+    /**
+     * Get area
+     *
+     * @return string 
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+
+    /**
+     * Set production
+     *
+     * @param integer $production
+     * @return AOC
+     */
+    public function setProduction($production)
+    {
+        $this->production = $production;
+
+        return $this;
+    }
+
+    /**
+     * Get production
+     *
+     * @return integer 
+     */
+    public function getProduction()
+    {
+        return $this->production;
+    }
+
+    /**
+     * Set soil
+     *
+     * @param string $soil
+     * @return AOC
+     */
+    public function setSoil($soil)
+    {
+        if (!empty($soil)) {
+            $this->soil = sprintf("%s,", $this->soil);
+        }
+        $this->soil .= $soil;
+
+        return $this;
+    }
+
+    /**
+     * Get soil
+     *
+     * @return mixed array or string
+     */
+    public function getSoil()
+    {
+        if (false !== strpos($this->soil, ',')){
+            return explode(',', $this->soil);
+        }
+
+        return $this->soil;
     }
 }
