@@ -66,6 +66,14 @@ class Cepage
 
     /**
      * @var string
+     * ex: "Noiriens" (http://fr.wikipedia.org/wiki/Famille_des_Noiriens)
+     *
+     * @ORM\Column
+     */
+    private $famille;
+
+    /**
+     * @var string
      *
      * @ORM\Column(name="more", type="text", nullable=true)
      * @Serializer\Exclude because we list this as a HATEOAS relation
@@ -217,5 +225,28 @@ class Cepage
     public function getAOC()
     {
         return $this->aOC;
+    }
+
+    /**
+     * Set famille
+     *
+     * @param string $famille
+     * @return Cepage
+     */
+    public function setFamille($famille)
+    {
+        $this->famille = $famille;
+
+        return $this;
+    }
+
+    /**
+     * Get famille
+     *
+     * @return string 
+     */
+    public function getFamille()
+    {
+        return $this->famille;
     }
 }

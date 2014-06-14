@@ -69,6 +69,12 @@ Class AOC
     private $id;
 
     /**
+     * @ORM\Column(name="appelation_type", type="string", nullable=true)
+     * ex: "AOC/AOP", "IGP"
+     */
+    private $appelation_type;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Vignoble", inversedBy="AOCs")
      * @ORM\JoinColumn(name="vignoble_id", referencedColumnName="id")
      **/
@@ -80,12 +86,6 @@ Class AOC
     private $name;
 
     /**
-     * @ORM\Column
-     * ex: "produit", "géographique", etc.
-     */
-    private $type;
-
-    /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Cepage", mappedBy="cepage")
      * @Serializer\Exclude because we list this as a HATEOAS relation
@@ -93,14 +93,14 @@ Class AOC
     private $cepages;
 
     /**
-     * @ORM\Column(name="area", type="integer", nullable=true)
+     * @ORM\Column(name="area", type="integer", nullable=true, options={"comment" = "hectares"})
      * ex: "7000" (in hectares)
      */
     private $area;
 
     /**
-     * @ORM\Column(name="production", type="integer", nullable=true)
-     * ex: "317500" (in hectolitre)
+     * @ORM\Column(name="production", type="integer", nullable=true, options={"comment" = "hectolitres"})
+    * ex: "317500" (in hectolitre)
      */
     private $production;
 
@@ -111,6 +111,18 @@ Class AOC
     private $soil;
 
     /**
+     * @ORM\Column(name="wine_type", type="string", nullable=true)
+     * ex: "vin blanc mousseux"
+     */
+    private $wine_type;
+
+
+    /**
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
      * @ORM\Column(name="more", type="text", nullable=true)
      * @Serializer\Exclude because we list this as a HATEOAS relation
      */
@@ -118,13 +130,13 @@ Class AOC
     
     /**
      * @var \DateTime
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -413,5 +425,97 @@ Class AOC
         }
 
         return $this->soil;
+    }
+
+    /**
+     * Set wine
+     *
+     * @param string $wine
+     * @return AOC
+     */
+    public function setWine($wine)
+    {
+        $this->wine = $wine;
+
+        return $this;
+    }
+
+    /**
+     * Get wine
+     *
+     * @return string 
+     */
+    public function getWine()
+    {
+        return $this->wine;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return AOC
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set wine_type
+     *
+     * @param string $wineType
+     * @return AOC
+     */
+    public function setWineType($wineType)
+    {
+        $this->wine_type = $wineType;
+
+        return $this;
+    }
+
+    /**
+     * Get wine_type
+     *
+     * @return string 
+     */
+    public function getWineType()
+    {
+        return $this->wine_type;
+    }
+
+    /**
+     * Set appelation_type
+     *
+     * @param string $appelationType
+     * @return AOC
+     */
+    public function setAppelationType($appelationType)
+    {
+        $this->appelation_type = $appelationType;
+
+        return $this;
+    }
+
+    /**
+     * Get appelation_type
+     *
+     * @return string 
+     */
+    public function getAppelationType()
+    {
+        return $this->appelation_type;
     }
 }
