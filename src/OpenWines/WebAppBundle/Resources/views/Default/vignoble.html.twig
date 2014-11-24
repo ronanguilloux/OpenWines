@@ -1,30 +1,8 @@
 {% set URL = url( 'vignoble', {'id': vignoble.getId} ) %}
 <h1><a href="{{ URL }}">{{ vignoble.getName }}</a></h1>
 <p><a href="{{ url('homepage') }}">Index</a></p>
-<p><a href="{{ url('vignobles') }}">Vignobles</a></p>
-<ul>
-    <li>Description : {{ vignoble.getDescription }}</li>
-    {% if  0 < vignoble.getAocs|length %}
-        <li><a href="{{
-            url('aocs', {'vignobleId': vignoble.getId })
-        }}">AOCs du {{ vignoble.getName }}</a> :
-            <ul>
-                {% for aoc in vignoble.getaocs %}
-                    <li><a href="{{
-                        url('aoc', {
-                            'id': aoc.getid,
-                            'vignobleId': aoc.getvignoble.getId
-                        } ) }}">{{ aoc.getname }}</a></li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endif %}
-    <li>Liens :
-        <ul>
-            {% for lien in vignoble.getMore %}
-            <li><a href="{{ lien }}">{{ lien }}</a></li>
-            {% endfor %}
-        </ul>
-    </li>
-
-</ul>
+{% include 'OpenWinesWebAppBundle:Default/fragments:vineyards_link.html.twig' %}
+<hr/>
+<p>Description : {{ vignoble.getDescription }}</p>
+{% include 'OpenWinesWebAppBundle:Default/fragments:aocs_list.html.twig' %}
+{% include 'OpenWinesWebAppBundle:Default/fragments:more.html.twig' with {resource: vignoble} %}

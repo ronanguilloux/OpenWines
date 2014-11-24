@@ -340,7 +340,7 @@ Class AOC
     /**
      * Get more
      *
-     * @return mixed array or string
+     * @return array
      */
     public function getMore()
     {
@@ -348,7 +348,7 @@ Class AOC
            return explode(',', $this->more);
         }
 
-        return $this->more;
+        return array($this->more);
     }
 
     /**

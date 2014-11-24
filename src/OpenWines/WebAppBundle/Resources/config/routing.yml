@@ -7,19 +7,19 @@ homepage:
         _method: GET
         _format: html|json|xml
 
-vignobles:
-    pattern: /vignobles.{_format}
+vineyards:
+    pattern: /vineyards.{_format}
     defaults:
-        _controller: 'OpenWinesWebAppBundle:Default:vignobles'
+        _controller: 'OpenWinesWebAppBundle:Default:vineyards'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
 
-vignoble:
-    pattern: /vignobles/{id}.{_format}
+vineyard:
+    pattern: /vineyards/{id}.{_format}
     defaults:
-        _controller: 'OpenWinesWebAppBundle:Default:vignoble'
+        _controller: 'OpenWinesWebAppBundle:Default:vineyard'
         _format: html
     requirements:
         _method: GET
@@ -27,45 +27,45 @@ vignoble:
         id: \d+
 
 aocs:
-    pattern: /vignobles/{vignobleId}/aocs.{_format}
+    pattern: /vineyards/{vineyardId}/aocs.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:aocs'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
-        vignobleId: \d+
+        vineyardId: \d+
 
 aoc:
-    pattern: /vignobles/{vignobleId}/aocs/{id}.{_format}
+    pattern: /vineyards/{vineyardId}/aocs/{id}.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:aoc'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
-        vignobleId: \d+
+        vineyardId: \d+
         id: \d+
 
 cepages:
-    pattern: /vignobles/{vignobleId}/aocs/{AOCId}/cepages.{_format}
+    pattern: /vineyards/{vineyardId}/aocs/{AOCId}/cepages.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:cepages'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
-        vignobleId: \d+
+        vineyardId: \d+
         AOCId: \d+
 
 cepage:
-    pattern: /vignobles/{vignobleId}/aocs/{AOCid}/cepages/{id}.{_format}
+    pattern: /vineyards/{vineyardId}/aocs/{AOCid}/cepages/{id}.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:cepage'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
-        vignobleId: \d+
+        vineyardId: \d+
         AOCId: \d+
         id: \d+

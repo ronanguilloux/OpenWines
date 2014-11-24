@@ -1,0 +1,16 @@
+{% if 0 < vignoble.getAocs|length %}
+    <p>
+        <a href="{{
+            url('aocs', {'vignobleId': vignoble.getId })
+        }}">AOCs du {{ vignoble.getName }}</a>
+    </p>
+    <ul>
+        {% for aoc in vignoble.getAocs %}
+            <li><a href="{{
+                url('aoc', {
+                    'id': aoc.getid,
+                    'vignobleId': aoc.getvignoble.getId
+                } ) }}">{{ aoc.getname }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}

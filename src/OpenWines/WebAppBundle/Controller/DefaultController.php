@@ -24,7 +24,7 @@ class DefaultController extends BaseController
     public function indexAction(Request $request)
     {
         $format         = $request->attributes->get('_format');
-        $hateoasRoutes  = ['vignobles'];
+        $hateoasRoutes  = ['vineyards'];
         $baseUrl        = $this->getBaseUrl($request);
         $routes         = [];
         foreach($hateoasRoutes as $route) {
@@ -38,77 +38,77 @@ class DefaultController extends BaseController
     }
 
     /**
-     * vignoblesAction
+     * vineyardsAction
      *
      * @return Array data
      */
-    public function vignoblesAction()
+    public function vineyardsAction()
     {
-        return ['vignobles' => $vignobles = $this
+        return ['vineyards' => $vineyards = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:Vignoble')
+            ->getRepository('OpenWinesWebAppBundle:Vineyard')
             ->findAllOrderByName()];
     }
 
     /**
-     * vignoblesAction
+     * vineyardsAction
      *
      * @param int id
      *
      * @return Array data
      */
-    public function vignobleAction($id)
+    public function vineyardAction($id)
     {
-        return ['vignoble' => $this
+        return ['vineyard' => $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:Vignoble')
+            ->getRepository('OpenWinesWebAppBundle:Vineyard')
             ->find($id)];
     }
 
     /**
      * AcosAction
      *
-     * @param int $vignobleId
+     * @param int $vineyardId
      *
      * @return Array data
      */
-    public function aocsAction($vignobleId)
+    public function aocsAction($vineyardId)
     {
-        $vignoble = $this
+        $vineyard = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:Vignoble')
-            ->find($vignobleId)
+            ->getRepository('OpenWinesWebAppBundle:Vineyard')
+            ->find($vineyardId)
         ;
         return [
-            'vignoble' => $vignoble,
+            'vineyard' => $vineyard,
             'aocs' => $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('OpenWinesWebAppBundle:AOC')
-            ->findByVignoble($vignoble)];
+            ->findByVineyard($vineyard)];
     }
 
     /**
      * AcoAction
      *
-     * @param int $vignobleId
+     * @param int $vineyardId
      * @param int $id
      *
      * @return Array data
      */
-    public function aocAction($vignobleId, $id)
+    public function aocAction($vineyardId, $id)
     {
-        $vignoble = $this
+        $vineyard = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:Vignoble')
-            ->find($vignobleId)
+            ->getRepository('OpenWinesWebAppBundle:Vineyard')
+            ->find($vineyardId)
         ;
         return [
-            'vignoble' => $vignoble,
+            'vineyard' => $vineyard,
             'aoc' => $this
             ->getDoctrine()
             ->getManager()
@@ -119,25 +119,13 @@ class DefaultController extends BaseController
     /**
      * cepagesAction
      *
-     * @param int $vignobleId
+     * @param int $vineyardId
      * @param int $AOCId
      *
      * @return Array data
      */
-    public function cepagesAction($vignobleId, $AOCId)
+    public function cepagesAction($vineyardId, $AOCId)
     {
-        $aoc = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:AOC')
-            ->find($AOCId)
-        ;
-        $vignoble = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:Vignoble')
-            ->find($vignobleId)
-        ;
         return ['cepages' => $this
             ->getDoctrine()
             ->getManager()

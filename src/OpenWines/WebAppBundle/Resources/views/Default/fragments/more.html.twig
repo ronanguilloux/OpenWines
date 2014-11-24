@@ -1,0 +1,9 @@
+{% if 0 < resource.getMore|length %}
+<p>{{ 'More'|trans|capitalize }}:
+    <ul>
+        {% for url in resource.getMore %}
+            <li><a href="{{ url }}">{{ url }}</a></li>
+        {% endfor %}
+    </ul>
+</p>
+{% endif %}

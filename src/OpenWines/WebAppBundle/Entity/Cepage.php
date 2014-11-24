@@ -210,7 +210,7 @@ class Cepage
      * @param \OpenWines\WebAppBundle\Entity\AOC $aoc
      * @return Cepage
      */
-    public function setAOC(\OpenWines\WebAppBundle\Entity\AOC $aoc = null)
+    public function setAOC(AOC $aoc = null)
     {
         $this->aOC = $aoc;
 

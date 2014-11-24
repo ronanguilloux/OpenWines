@@ -1,6 +1,7 @@
+<h1><a href="{{ url('vignobles') }}">Vignobles</a></h1>
+<p><a href="{{ url('homepage') }}">Index</a></p>
+<hr/>
 {% if  0 < vignobles|length %}
-    <h1><a href="{{ url('vignobles') }}">Vignobles</a></h1>
-    <p><a href="{{ url('homepage') }}">Index</a></p>
     <ul>
     {% for vignoble in vignobles %}
         {% set URL = url( 'vignoble', {'id': vignoble.getId} ) %}
@@ -8,5 +9,5 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>{{ 'No vignobles found'|trans }}</p>
+    <p>{{ 'no vineyard found'|trans }}</p>
 {% endif %}

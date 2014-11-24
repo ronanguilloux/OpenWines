@@ -1,11 +1,9 @@
 <h1>{{ aoc.getName }} (AOC)</h1>
 <p><a href="{{ url('homepage') }}">Index</a></p>
-<p><a href="{{ url('vignoble', {'id': vignoble.getId} ) }}">{{ vignoble.getName }}</a></p>
-<p><a href="{{ url('aocs', {'vignobleId': vignoble.getId} ) }}">AOCs du {{ vignoble.getName }}</a></p>
-<li>Liens :
-    <ul>
-        {% for lien in aoc.getMore %}
-            <li><a href="{{ lien }}">{{ lien }}</a></li>
-        {% endfor %}
-    </ul>
-</li>
+
+{% include 'OpenWinesWebAppBundle:Default/fragments:vineyard_link.html.twig' %}
+
+<p>{{ 'designation'|trans|capitalize }}: <a href="{{ url('aocs', {'vignobleId': vignoble.getId} ) }}">AOCs du {{ vignoble.getName }}</a></p>
+
+{% include 'OpenWinesWebAppBundle:Default/fragments:more.html.twig' with {resource: aoc} %}
+

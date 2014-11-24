@@ -19,7 +19,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *   name = "parent",
  *   href = @Hateoas\Route(
- *      "vignobles",
+ *      "vineyards",
  *      parameters = {
  *          "_format" = "json"
  *      },
@@ -29,7 +29,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *    "self",
  *    href = @Hateoas\Route(
- *      "vignoble",
+ *      "vineyard",
  *      parameters = {
  *          "id"      = "expr(object.getId())",
  *          "_format" = "json"
@@ -42,7 +42,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *   href = @Hateoas\Route(
  *      "aocs",
  *      parameters = {
- *          "vignobleId" = "expr(object.getId())",
+ *          "vineyardId" = "expr(object.getId())",
  *          "_format"  = "json"
  *      },
  *      absolute = true
@@ -52,11 +52,11 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *   name = "more",
  *   href = "expr(object.getMore())"
  * )
- * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\VignobleRepository")
- * @ORM\Table(name="vignoble")
+ * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\VineyardRepository")
+ * @ORM\Table(name="vineyard")
  * @ORM\HasLifecycleCallbacks
  **/
-Class Vignoble
+Class Vineyard
 {
 
     /**
@@ -88,7 +88,7 @@ Class Vignoble
     private $area; // Km2
 
     /**
-     * @ORM\OneToMany(targetEntity="AOC", mappedBy="vignoble")
+     * @ORM\OneToMany(targetEntity="AOC", mappedBy="vineyard")
      * @Serializer\Exclude because we list this as a HATEOAS relation
      **/
     private $AOCs;
@@ -148,7 +148,7 @@ Class Vignoble
      * Set name
      *
      * @param string $name
-     * @return Vignoble
+     * @return Vineyard
      */
     public function setName($name)
     {
@@ -171,7 +171,7 @@ Class Vignoble
      * Set description
      *
      * @param string $description
-     * @return Vignoble
+     * @return Vineyard
      */
     public function setDescription($description)
     {
@@ -194,7 +194,7 @@ Class Vignoble
      * Set departments
      *
      * @param string $departments
-     * @return Vignoble
+     * @return Vineyard
      */
     public function setDepartments($departments)
     {
@@ -221,7 +221,7 @@ Class Vignoble
      * Set area
      *
      * @param string $area
-     * @return Vignoble
+     * @return Vineyard
      */
     public function setArea($area)
     {
@@ -244,7 +244,7 @@ Class Vignoble
      * Set more
      *
      * @param string $more
-     * @return Vignoble
+     * @return Vineyard
      */
     public function setMore($more)
     {
@@ -274,7 +274,7 @@ Class Vignoble
      * Add AOCs
      *
      * @param \OpenWines\WebAppBundle\Entity\AOC $aocs
-     * @return Vignoble
+     * @return Vineyard
      */
     public function addAOC(\OpenWines\WebAppBundle\Entity\AOC $aocs)
     {
