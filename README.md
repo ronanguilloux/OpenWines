@@ -7,6 +7,11 @@ French Vineyards Open Data provider ; pet project for alcoholics developers.
 - Based on RESTful API Modeling Definition, [RAML](http://raml.org/)
 - Distributed as a [HATEOAS](http://en.wikipedia.org/wiki/HATEOAS)-based RESTful API
 - Work in Progress
+ 
+
+## TODO
+
+See [TODO.md]()
 
 
 ## Licence
