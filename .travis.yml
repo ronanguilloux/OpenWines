@@ -5,6 +5,12 @@ php:
   - 5.3
   - 5.4
 
-before_script: composer install -n
+before_script:
+    - wget http://getcomposer.org/composer.phar
+    - php composer.phar install
+    - php app/console doctrine:database:create --env=test
+    - php app/console doctrine:schema:create --env=test
 
-script: phpunit -c app
+script:
+    - phpunit -c app
+    - php bin/behat

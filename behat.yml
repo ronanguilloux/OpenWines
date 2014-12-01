@@ -1,12 +1,20 @@
 default:
   suites:
     default:
+      type:   symfony_bundle
+      bundle: OpenWinesWebAppBundle
       parameters:
         base_url: http://openwines
       contexts:
         - Knp\FriendlyContexts\Context\MinkContext
         - Knp\FriendlyContexts\Context\ApiContext
   extensions:
+      #    Sanpi\Behatch\Extension:
+      #contexts:
+      #  json:
+      #    evaluation_mode: javascript
+      #  rest: ~
+    Behat\Symfony2Extension: ~
     Behat\MinkExtension:
       base_url: http://openwines
       sessions:
