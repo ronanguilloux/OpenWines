@@ -1,4 +1,4 @@
-- [ ] Rename AOC into Appellation`(which is used both in english & french)
+- [x] Rename AOC into `Appellation` (which is used both in english & french)
 - [ ] Write a RAML API definition
 - [ ] Use RAML API Def to set up API using [GoIntegro/hateoas-bundle](https://github.com/GoIntegro/hateoas-bundle)
 - [ ] i18N all the things!

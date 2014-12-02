@@ -18,7 +18,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *    "parent",
  *    href = @Hateoas\Route(
- *      "aocs",
+ *      "appellations",
  *      parameters = {
  *          "vignobleId"      = "expr(object.getVignoble().getId())",
  *          "_format" = "json"
@@ -29,7 +29,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *   name = "self",
  *   href = @Hateoas\Route(
- *      "aoc",
+ *      "appellation",
  *      parameters = {
  *          "id" = "expr(object.getId())",
  *          "vignobleId" = "expr(object.getVignoble().getId())",
@@ -44,7 +44,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *      "cepages",
  *      parameters = {
  *          "vignobleId" = "expr(object.getVignoble().getId())",
- *          "AOCId" = "expr(object.getId())",
+ *          "AppellationId" = "expr(object.getId())",
  *          "_format"  = "json"
  *      },
  *      absolute = true
@@ -54,11 +54,11 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *   name = "more",
  *   href = "expr(object.getMore())"
  * )
- * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\AOCRepository")
- * @ORM\Table(name="AOC")
+ * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\AppellationRepository")
+ * @ORM\Table(name="Appellation")
  * @ORM\HasLifecycleCallbacks
  */
-Class AOC
+Class Appellation
 {
     /**
      * @Serializer\Exclude
@@ -70,12 +70,12 @@ Class AOC
 
     /**
      * @ORM\Column(name="appelation_type", type="string", nullable=true)
-     * ex: "AOC/AOP", "IGP"
+     * ex: "Appellation/AOP", "IGP"
      */
     private $appelation_type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Vignoble", inversedBy="AOCs")
+     * @ORM\ManyToOne(targetEntity="Vignoble", inversedBy="Appellations")
      * @ORM\JoinColumn(name="vignoble_id", referencedColumnName="id")
      **/
     private $vignoble;
@@ -177,7 +177,7 @@ Class AOC
      * Set name
      *
      * @param string $name
-     * @return AOC
+     * @return Appellation
      */
     public function setName($name)
     {
@@ -200,7 +200,7 @@ Class AOC
      * Set type
      *
      * @param string $type
-     * @return AOC
+     * @return Appellation
      */
     public function setType($type)
     {
@@ -223,7 +223,7 @@ Class AOC
      * Set vignoble
      *
      * @param \OpenWines\WebAppBundle\Entity\Vignoble $vignoble
-     * @return AOC
+     * @return Appellation
      */
     public function setVignoble(\OpenWines\WebAppBundle\Entity\Vignoble $vignoble = null)
     {
@@ -246,7 +246,7 @@ Class AOC
      * Add cepages
      *
      * @param \OpenWines\WebAppBundle\Entity\Cepage $cepages
-     * @return AOC
+     * @return Appellation
      */
     public function addCepage(\OpenWines\WebAppBundle\Entity\Cepage $cepages)
     {
@@ -279,7 +279,7 @@ Class AOC
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return AOC
+     * @return Appellation
      */
     public function setCreatedAt($createdAt)
     {
@@ -302,7 +302,7 @@ Class AOC
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return AOC
+     * @return Appellation
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -325,7 +325,7 @@ Class AOC
      * Set more
      *
      * @param string $more
-     * @return AOC
+     * @return Appellation
      */
     public function setMore($more)
     {
@@ -355,7 +355,7 @@ Class AOC
      * Set area
      *
      * @param string $area
-     * @return AOC
+     * @return Appellation
      */
     public function setArea($area)
     {
@@ -378,7 +378,7 @@ Class AOC
      * Set production
      *
      * @param integer $production
-     * @return AOC
+     * @return Appellation
      */
     public function setProduction($production)
     {
@@ -401,7 +401,7 @@ Class AOC
      * Set soil
      *
      * @param string $soil
-     * @return AOC
+     * @return Appellation
      */
     public function setSoil($soil)
     {
@@ -431,7 +431,7 @@ Class AOC
      * Set wine
      *
      * @param string $wine
-     * @return AOC
+     * @return Appellation
      */
     public function setWine($wine)
     {
@@ -454,7 +454,7 @@ Class AOC
      * Set description
      *
      * @param string $description
-     * @return AOC
+     * @return Appellation
      */
     public function setDescription($description)
     {
@@ -477,7 +477,7 @@ Class AOC
      * Set wine_type
      *
      * @param string $wineType
-     * @return AOC
+     * @return Appellation
      */
     public function setWineType($wineType)
     {
@@ -500,7 +500,7 @@ Class AOC
      * Set appelation_type
      *
      * @param string $appelationType
-     * @return AOC
+     * @return Appellation
      */
     public function setAppelationType($appelationType)
     {

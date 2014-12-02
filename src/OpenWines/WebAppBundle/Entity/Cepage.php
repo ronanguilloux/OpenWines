@@ -13,9 +13,9 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *    "parent",
  *    href = @Hateoas\Route(
- *      "aocs",
+ *      "appellations",
  *      parameters = {
- *          "vignobleId"      = "expr(object.getAOC().getVignoble().getId())",
+ *          "vignobleId"      = "expr(object.getAppellation().getVignoble().getId())",
  *          "_format" = "json"
  *      },
  *      absolute = true
@@ -24,9 +24,9 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *   name = "self",
  *   href = @Hateoas\Route(
- *      "aoc",
+ *      "appellation",
  *      parameters = {
- *          "vignobleId" = "expr(object.getAOC().getId())",
+ *          "vignobleId" = "expr(object.getAppellation().getId())",
  *          "id" = "expr(object.getId())",
  *          "_format"  = "json"
  *      },
@@ -52,10 +52,10 @@ class Cepage
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AOC", inversedBy="AOCs")
-     * @ORM\JoinColumn(name="AOC_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Appellation", inversedBy="Appellations")
+     * @ORM\JoinColumn(name="Appellation_id", referencedColumnName="id")
      **/
-    private $aOC;
+    private $appellation;
 
     /**
      * @var string
@@ -205,26 +205,26 @@ class Cepage
     }
 
     /**
-     * Set AOC
+     * Set Appellation
      *
-     * @param \OpenWines\WebAppBundle\Entity\AOC $aoc
+     * @param \OpenWines\WebAppBundle\Entity\Appellation $appellation
      * @return Cepage
      */
-    public function setAOC(\OpenWines\WebAppBundle\Entity\AOC $aoc = null)
+    public function setAppellation(\OpenWines\WebAppBundle\Entity\Appellation $appellation = null)
     {
-        $this->aOC = $aoc;
+        $this->appellation = $appellation;
 
         return $this;
     }
 
     /**
-     * Get AOC
+     * Get Appellation
      *
-     * @return \OpenWines\WebAppBundle\Entity\AOC 
+     * @return \OpenWines\WebAppBundle\Entity\Appellation
      */
-    public function getAOC()
+    public function getAppellation()
     {
-        return $this->aOC;
+        return $this->appellation;
     }
 
     /**

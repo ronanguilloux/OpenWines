@@ -1,10 +1,10 @@
-<h1>{{ aoc.getName }} (AOC)</h1>
+<h1>{{ appellation.getName }} (AOC)</h1>
 <p><a href="{{ url('homepage') }}">Index</a></p>
 <p><a href="{{ url('vignoble', {'id': vignoble.getId} ) }}">{{ vignoble.getName }}</a></p>
-<p><a href="{{ url('aocs', {'vignobleId': vignoble.getId} ) }}">AOCs du {{ vignoble.getName }}</a></p>
+<p><a href="{{ url('appellations', {'vignobleId': vignoble.getId} ) }}">AOCs du {{ vignoble.getName }}</a></p>
 <li>Liens :
     <ul>
-        {% for lien in aoc.getMore %}
+        {% for lien in appellation.getMore %}
             <li><a href="{{ lien }}">{{ lien }}</a></li>
         {% endfor %}
     </ul>

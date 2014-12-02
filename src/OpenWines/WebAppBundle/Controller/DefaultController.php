@@ -74,7 +74,7 @@ class DefaultController extends BaseController
      *
      * @return Array data
      */
-    public function aocsAction($vignobleId)
+    public function appellationsAction($vignobleId)
     {
         $vignoble = $this
             ->getDoctrine()
@@ -84,10 +84,10 @@ class DefaultController extends BaseController
         ;
         return [
             'vignoble' => $vignoble,
-            'aocs' => $this
+            'appellations' => $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:AOC')
+            ->getRepository('OpenWinesWebAppBundle:Appellation')
             ->findByVignoble($vignoble)];
     }
 
@@ -99,7 +99,7 @@ class DefaultController extends BaseController
      *
      * @return Array data
      */
-    public function aocAction($vignobleId, $id)
+    public function appellationAction($vignobleId, $id)
     {
         $vignoble = $this
             ->getDoctrine()
@@ -109,10 +109,10 @@ class DefaultController extends BaseController
         ;
         return [
             'vignoble' => $vignoble,
-            'aoc' => $this
+            'appellation' => $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:AOC')
+            ->getRepository('OpenWinesWebAppBundle:Appellation')
             ->find($id)];
     }
 
@@ -120,17 +120,17 @@ class DefaultController extends BaseController
      * cepagesAction
      *
      * @param int $vignobleId
-     * @param int $AOCId
+     * @param int $AppellationId
      *
      * @return Array data
      */
-    public function cepagesAction($vignobleId, $AOCId)
+    public function cepagesAction($vignobleId, $AppellationId)
     {
-        $aoc = $this
+        $appellation = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('OpenWinesWebAppBundle:AOC')
-            ->find($AOCId)
+            ->getRepository('OpenWinesWebAppBundle:Appellation')
+            ->find($AppellationId)
         ;
         $vignoble = $this
             ->getDoctrine()
@@ -142,7 +142,7 @@ class DefaultController extends BaseController
             ->getDoctrine()
             ->getManager()
             ->getRepository('OpenWinesWebAppBundle:Cepage')
-            ->findByAOC($AOCId)];
+            ->findByAppellation($AppellationId)];
     }
 
 }

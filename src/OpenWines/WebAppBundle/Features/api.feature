@@ -21,14 +21,14 @@ Feature: api
     And the response should contain "grand terroir"
 
   Scenario: Found an AOCs list for a vineyard
-    Given I am on "/vignobles/7/aocs.json"
+    Given I am on "/vignobles/7/appellations.json"
     Then the response status code should be 200
     And the response should contain "Macvin"
     And the response should contain "produit"
 
   Scenario: Found a single AOC in a vineyard
-    Given I am on "/vignobles/7/aocs/6.json"
+    Given I am on "/vignobles/7/appellations/6.json"
     Then the response status code should be 200
     And the response should contain "Macvin"
-    And the response should contain "aoc"
+    And the response should contain "appellation"
     And the response should contain "produit"

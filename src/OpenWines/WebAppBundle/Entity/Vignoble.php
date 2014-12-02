@@ -38,9 +38,9 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *    )
  * )
  * @Hateoas\Relation(
- *   name = "aocs",
+ *   name = "appellations",
  *   href = @Hateoas\Route(
- *      "aocs",
+ *      "appellations",
  *      parameters = {
  *          "vignobleId" = "expr(object.getId())",
  *          "_format"  = "json"
@@ -88,10 +88,10 @@ Class Vignoble
     private $area; // Km2
 
     /**
-     * @ORM\OneToMany(targetEntity="AOC", mappedBy="vignoble")
+     * @ORM\OneToMany(targetEntity="Appellation", mappedBy="vignoble")
      * @Serializer\Exclude because we list this as a HATEOAS relation
      **/
-    private $AOCs;
+    private $Appellations;
 
     /**
      * @ORM\Column(name="more", type="text", nullable=true)
@@ -115,7 +115,7 @@ Class Vignoble
      * .ctor()
      */
     public function __construct() {
-        $this->aocs = new ArrayCollection();
+        $this->appellations = new ArrayCollection();
     }
 
     /**
@@ -271,43 +271,43 @@ Class Vignoble
     }
 
     /**
-     * Add AOCs
+     * Add Appellations
      *
-     * @param \OpenWines\WebAppBundle\Entity\AOC $aocs
+     * @param \OpenWines\WebAppBundle\Entity\Appellation $appellations
      * @return Vignoble
      */
-    public function addAOC(\OpenWines\WebAppBundle\Entity\AOC $aocs)
+    public function addAppellation(\OpenWines\WebAppBundle\Entity\Appellation $appellations)
     {
-        $this->AOCs[] = $aocs;
+        $this->Appellations[] = $appellations;
 
         return $this;
     }
 
     /**
-     * Remove AOCs
+     * Remove Appellations
      *
-     * @param \OpenWines\WebAppBundle\Entity\AOC $aocs
+     * @param \OpenWines\WebAppBundle\Entity\Appellation $appellations
      */
-    public function removeAOC(\OpenWines\WebAppBundle\Entity\AOC $aocs)
+    public function removeAppellation(\OpenWines\WebAppBundle\Entity\Appellation $appellations)
     {
-        $this->AOCs->removeElement($aocs);
+        $this->Appellations->removeElement($appellations);
     }
 
     /**
-     * Get AOCs
+     * Get Appellations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAOCs()
+    public function getAppellations()
     {
-        return $this->AOCs;
+        return $this->Appellations;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return AOC
+     * @return Appellation
      */
     public function setCreatedAt($createdAt)
     {
@@ -330,7 +330,7 @@ Class Vignoble
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return AOC
+     * @return Appellation
      */
     public function setUpdatedAt($updatedAt)
     {

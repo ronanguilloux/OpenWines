@@ -26,20 +26,20 @@ vignoble:
         _format: html|json|xml
         id: \d+
 
-aocs:
-    pattern: /vignobles/{vignobleId}/aocs.{_format}
+appellations:
+    pattern: /vignobles/{vignobleId}/appellations.{_format}
     defaults:
-        _controller: 'OpenWinesWebAppBundle:Default:aocs'
+        _controller: 'OpenWinesWebAppBundle:Default:appellations'
         _format: html
     requirements:
         _method: GET
         _format: html|json|xml
         vignobleId: \d+
 
-aoc:
-    pattern: /vignobles/{vignobleId}/aocs/{id}.{_format}
+appellation:
+    pattern: /vignobles/{vignobleId}/appellations/{id}.{_format}
     defaults:
-        _controller: 'OpenWinesWebAppBundle:Default:aoc'
+        _controller: 'OpenWinesWebAppBundle:Default:appellation'
         _format: html
     requirements:
         _method: GET
@@ -48,7 +48,7 @@ aoc:
         id: \d+
 
 cepages:
-    pattern: /vignobles/{vignobleId}/aocs/{AOCId}/cepages.{_format}
+    pattern: /vignobles/{vignobleId}/appellations/{AOCId}/cepages.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:cepages'
         _format: html
@@ -59,7 +59,7 @@ cepages:
         AOCId: \d+
 
 cepage:
-    pattern: /vignobles/{vignobleId}/aocs/{AOCid}/cepages/{id}.{_format}
+    pattern: /vignobles/{vignobleId}/appellations/{AOCid}/cepages/{id}.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:cepage'
         _format: html

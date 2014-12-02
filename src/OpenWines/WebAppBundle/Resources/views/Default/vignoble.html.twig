@@ -6,15 +6,15 @@
     <li>Description : {{ vignoble.getDescription }}</li>
     {% if  0 < vignoble.getAocs|length %}
         <li><a href="{{
-            url('aocs', {'vignobleId': vignoble.getId })
+            url('appellations', {'vignobleId': vignoble.getId })
         }}">AOCs du {{ vignoble.getName }}</a> :
             <ul>
-                {% for aoc in vignoble.getaocs %}
+                {% for appellation in vignoble.getappellations %}
                     <li><a href="{{
-                        url('aoc', {
-                            'id': aoc.getid,
-                            'vignobleId': aoc.getvignoble.getId
-                        } ) }}">{{ aoc.getname }}</a></li>
+                        url('appellation', {
+                            'id': appellation.getid,
+                            'vignobleId': appellation.getvignoble.getId
+                        } ) }}">{{ appellation.getname }}</a></li>
                 {% endfor %}
             </ul>
         </li>

@@ -1,0 +1,16 @@
+<h1><a href="{{ url('appellations', {'vignobleId': vignoble.getId} ) }}">AOCs du {{ vignoble.getName }}</a></h1>
+<p><a href="{{ url('homepage') }}">Index</a></p>
+<p><a href="{{ url('vignoble', {'id': vignoble.getId} ) }}">{{ vignoble.getName }}</a></p>
+{% if  0 < vignoble.getAocs|length %}
+    <p>AOCs du {{ vignoble.getName }} :
+        <ul>
+            {% for appellation in vignoble.getappellations %}
+                <li><a href="{{
+                    url('appellation', {
+                        'id': appellation.getid,
+                        'vignobleId': appellation.getvignoble.getId
+                    } ) }}">{{ appellation.getname }}</a></li>
+            {% endfor %}
+        </ul>
+    </p>
+    {% endif %}
