@@ -55,7 +55,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *   href = "expr(object.getMore())"
  * )
  * @ORM\Entity(repositoryClass="OpenWines\WebAppBundle\Repository\AppellationRepository")
- * @ORM\Table(name="Appellation")
+ * @ORM\Table(name="appellation")
  * @ORM\HasLifecycleCallbacks
  */
 Class Appellation

@@ -48,7 +48,7 @@ appellation:
         id: \d+
 
 cepages:
-    pattern: /vignobles/{vignobleId}/appellations/{AOCId}/cepages.{_format}
+    pattern: /vignobles/{vignobleId}/appellations/{AppellationId}/cepages.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:cepages'
         _format: html
@@ -56,10 +56,10 @@ cepages:
         _method: GET
         _format: html|json|xml
         vignobleId: \d+
-        AOCId: \d+
+        AppellationId: \d+
 
 cepage:
-    pattern: /vignobles/{vignobleId}/appellations/{AOCid}/cepages/{id}.{_format}
+    pattern: /vignobles/{vignobleId}/appellations/{AppellationId}/cepages/{id}.{_format}
     defaults:
         _controller: 'OpenWinesWebAppBundle:Default:cepage'
         _format: html
@@ -67,5 +67,5 @@ cepage:
         _method: GET
         _format: html|json|xml
         vignobleId: \d+
-        AOCId: \d+
+        AppellationId: \d+
         id: \d+

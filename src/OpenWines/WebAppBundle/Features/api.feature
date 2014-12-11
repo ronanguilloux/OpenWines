@@ -7,28 +7,31 @@ Feature: api
   Scenario: index as HATEOAS
     Given I am on "/index.json"
     Then the response status code should be 200
-    And dump the content
     And the response should contain "vignobles"
 
   Scenario: Found a vineyard list
     Given I am on "/vignobles.json"
     Then the response status code should be 200
-    And the response should contain "Jura"
+    And the response should contain "Loire"
 
   Scenario: Found any single vineyard
-    Given I am on "/vignobles/7.json"
+    Given I am on "/vignobles/13.json"
     Then the response status code should be 200
+    And the response should contain "Loire"
+    And the response should contain "Appellation"
     And the response should contain "grand terroir"
 
-  Scenario: Found an AOCs list for a vineyard
-    Given I am on "/vignobles/7/appellations.json"
+  Scenario: Found an Appellations list for a vineyard
+    Given I am on "/vignobles/13/appellations.json"
     Then the response status code should be 200
-    And the response should contain "Macvin"
-    And the response should contain "produit"
+#    And print last response
+    And the response should contain "Loire"
+    And the response should contain "Appellation"
+    And the response should contain "de Loire"
 
-  Scenario: Found a single AOC in a vineyard
-    Given I am on "/vignobles/7/appellations/6.json"
+  Scenario: Found a single Appellation in a vineyard
+    Given I am on "/vignobles/13/appellations/7.json"
     Then the response status code should be 200
-    And the response should contain "Macvin"
-    And the response should contain "appellation"
-    And the response should contain "produit"
+    And the response should contain "Loire"
+    And the response should contain "Appellation"
+    And the response should contain "de Loire"

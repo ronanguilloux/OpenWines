@@ -14,25 +14,23 @@ Feature: website
     And I should see "Jura"
 
   Scenario: Found any single vineyard
-    Given I am on "/vignobles/7"
+    Given I am on "/vignobles/13"
     Then the response status code should be 200
-    And I should see "Jura"
-    And I should see "Appellations du Jura"
+    And I should see "Loire"
+    And I should see "Appellation"
     And I should see "grand terroir"
-    And I should see "Macvin du Jura"
-    And I should see "http://www.jura-vins.com"
+    And I should see "crémant de Loire"
 
   Scenario: Found an Appellations list for a vineyard
-    Given I am on "/vignobles/7/appellations"
+    Given I am on "/vignobles/13/appellations"
     Then the response status code should be 200
-    And I should see "Jura"
-    And I should see "Appellations du Jura"
-    And I should see "Macvin du Jura"
+    And I should see "Loire"
+    And I should see "Appellation"
+    And I should see "crémant de Loire"
 
   Scenario: Found a single Appellation in a vineyard
-    Given I am on "/vignobles/7/appellations/6"
+    Given I am on "/vignobles/13/appellations/7"
     Then the response status code should be 200
-    And I should see "Jura"
-    And I should see "Appellations du Jura"
-    And I should see "Macvin du Jura"
-    And I should see "http://www.jura-vins.com/appellation-macvin-du-jura.htm"
+    And I should see "Loire"
+    And I should see "Appellation"
+    And I should see "crémant de Loire"

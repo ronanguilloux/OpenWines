@@ -4,7 +4,7 @@ default:
       type:   symfony_bundle
       bundle: OpenWinesWebAppBundle
       parameters:
-        base_url: http://openwines
+        base_url: http://openwines/app_dev.php/
       contexts:
         - Knp\FriendlyContexts\Context\MinkContext
         - Knp\FriendlyContexts\Context\ApiContext
@@ -16,7 +16,7 @@ default:
       #  rest: ~
     Behat\Symfony2Extension: ~
     Behat\MinkExtension:
-      base_url: http://openwines
+      base_url: http://openwines/app_dev.php/
       sessions:
         default:
           goutte: ~

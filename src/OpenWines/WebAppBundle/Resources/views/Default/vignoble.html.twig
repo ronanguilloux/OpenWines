@@ -4,17 +4,17 @@
 <p><a href="{{ url('vignobles') }}">Vignobles</a></p>
 <ul>
     <li>Description : {{ vignoble.getDescription }}</li>
-    {% if  0 < vignoble.getAocs|length %}
+    {% if  0 < vignoble.getAppellations|length %}
         <li><a href="{{
             url('appellations', {'vignobleId': vignoble.getId })
-        }}">AOCs du {{ vignoble.getName }}</a> :
+        }}">Appellations du {{ vignoble.getName }}</a> :
             <ul>
-                {% for appellation in vignoble.getappellations %}
+                {% for appellation in vignoble.getAppellations %}
                     <li><a href="{{
                         url('appellation', {
                             'id': appellation.getid,
-                            'vignobleId': appellation.getvignoble.getId
-                        } ) }}">{{ appellation.getname }}</a></li>
+                            'vignobleId': appellation.getVignoble.getId
+                        } ) }}">{{ appellation.getName }}</a></li>
                 {% endfor %}
             </ul>
         </li>

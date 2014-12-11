@@ -24,14 +24,14 @@ class CepageRepository extends BaseRepository
     /** ************* */
     /** F I N D E R S */
 
-    public function findByAOCOrderByName($AOCId)
+    public function findByAppellationOrderByName($AppellationId)
     {
         $query = $this->getEntityManager()
             ->createQuery('
-            SELECT c, a FROM OpenWinesWebAppBundle:AOC a
-            INNER JOIN a.AOC a
+            SELECT c, a FROM OpenWinesWebAppBundle:Appellation a
+            INNER JOIN a.Appellation a
             WHERE a.id = :id'
-            )->setParameter('id', (int)$AOCId);
+            )->setParameter('id', (int)$AppellationId);
         try {
             return $query->getSingleResult();
         } catch (NoResultException $e) {

@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 
-class AocRepository extends BaseRepository
+class AppellationRepository extends BaseRepository
 {
 
     /**
@@ -30,7 +30,7 @@ class AocRepository extends BaseRepository
     {
         $query = $this->getEntityManager()
             ->createQuery('
-            SELECT a, r FROM OpenWinesWebAppBundle:AOC a
+            SELECT a, r FROM OpenWinesWebAppBundle:Appellation a
             INNER JOIN a.vignoble r
             WHERE r.id = :id'
             )->setParameter('id', (int)$vignobleId);
