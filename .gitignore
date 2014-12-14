@@ -17,6 +17,9 @@ app/config/parameters.yml
 # Composer
 composer.phar
 
+# NodeJs
+web/client/node_modules/*
+
 # Other
 /build/
 /bin/
