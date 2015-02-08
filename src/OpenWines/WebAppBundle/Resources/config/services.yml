@@ -1,9 +1,0 @@
-parameters:
-#    open_wines_web_app.example.class: OpenWines\WebAppBundle\Example
-
-services:
-    api_response_listener:
-      class: OpenWines\WebAppBundle\EventListener\Kernel\ApiResponseListener
-      tags:
-        - { name: kernel.event_listener, event: kernel.view , priority: 1000 }
-      arguments: ["@twig", "@jms_serializer"]

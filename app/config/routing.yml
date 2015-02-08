@@ -1,4 +1,7 @@
-open_wines_web_app:
-    resource: "@OpenWinesWebAppBundle/Resources/config/routing.yml"
+open_wines_app:
+    resource: "@OpenWinesAppBundle/Resources/config/routing.yml"
     prefix:   /
 
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

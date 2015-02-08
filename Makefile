@@ -9,7 +9,7 @@
 #
 #    "require-dev": {
 #	     (...)
-#		 "phpunit/phpunit": 			"4.5.*"
+#        "phpunit/phpunit":             "4.5.*",
 #        "squizlabs/php_codesniffer":   "2.0.x-dev",
 #        "sebastian/phpcpd":            "*",
 #        "phploc/phploc" :              "*",

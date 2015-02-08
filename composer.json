@@ -4,36 +4,27 @@
     "type": "project",
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "~2.4",
-        "doctrine/orm": "~2.2,>=2.2.3",
-        "doctrine/doctrine-bundle": "~1.2",
+        "symfony/symfony": "2.6.*",
         "twig/extensions": "~1.0",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
-        "sensio/distribution-bundle": "~2.3",
-        "sensio/framework-extra-bundle": "~3.0",
-        "sensio/generator-bundle": "~2.3",
+        "sensio/distribution-bundle": "~3.0,>=3.0.12",
+        "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "jms/serializer-bundle": "*",
-        "willdurand/hateoas-bundle": "@stable",
-        "pomm-project/pomm-bundle": "2.0-dev"
+        "pomm-project/foundation": "2.0.*@dev",
+        "pomm-project/model-manager": "2.0.*@dev",
+        "pomm-project/cli": "2.0.*@dev",
+        "pomm-project/pomm-symfony-bridge": "~2.0@dev",
+        "pomm-project/pomm-bundle": "2.0.*@dev"
     },
     "require-dev": {
-        "behat/behat": "~3.0@dev",
-        "behat/mink-extension": "~2.0@dev",
-        "behat/mink": "~1.6@dev",
-        "behat/mink-browserkit-driver": "dev-master",
-        "behat/mink-goutte-driver": "dev-master",
-        "behat/mink-selenium2-driver": "dev-master",
-        "behat/symfony2-extension": "2.0.x-dev",
-        "behat/mink-browserkit-driver":  "*",
-        "knplabs/friendly-contexts": "dev-master",
-        "phpunit/phpunit": 			"4.5.*",
+        "sensio/generator-bundle":     "~2.3",
+        "phpunit/phpunit":             "4.5.*",
         "squizlabs/php_codesniffer":   "2.0.x-dev",
         "sebastian/phpcpd":            "*",
         "phploc/phploc" :              "*",
@@ -42,19 +33,24 @@
         "fabpot/php-cs-fixer":         "@stable"
     },
     "scripts": {
+        "post-root-package-install": [
+            "SymfonyStandard\\Composer::hookRootPackageInstall"
+        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
         ]
     },
     "config": {
@@ -63,11 +59,12 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
+        "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.4-dev"
+            "dev-master": "2.6-dev"
         }
     }
 }
