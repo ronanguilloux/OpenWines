@@ -20,7 +20,8 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/serializer-bundle": "*",
-        "willdurand/hateoas-bundle": "@stable"
+        "willdurand/hateoas-bundle": "@stable",
+        "pomm-project/pomm-bundle": "2.0-dev"
     },
     "require-dev": {
         "behat/behat": "~3.0@dev",
@@ -31,8 +32,14 @@
         "behat/mink-selenium2-driver": "dev-master",
         "behat/symfony2-extension": "2.0.x-dev",
         "behat/mink-browserkit-driver":  "*",
-
-        "knplabs/friendly-contexts": "dev-master"
+        "knplabs/friendly-contexts": "dev-master",
+        "phpunit/phpunit": 			"4.5.*",
+        "squizlabs/php_codesniffer":   "2.0.x-dev",
+        "sebastian/phpcpd":            "*",
+        "phploc/phploc" :              "*",
+        "phpmd/phpmd" :                "2.0.*",
+        "pdepend/pdepend" :            "2.0.*",
+        "fabpot/php-cs-fixer":         "@stable"
     },
     "scripts": {
         "post-install-cmd": [
