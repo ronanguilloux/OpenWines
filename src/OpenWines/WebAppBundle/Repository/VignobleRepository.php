@@ -5,12 +5,7 @@
  * Date: 29/05/2014
  * Time: 17:45
  */
-
 namespace OpenWines\WebAppBundle\Repository;
-
-use Doctrine\ORM\EntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class VignobleRepository
@@ -24,13 +19,9 @@ class VignobleRepository extends BaseRepository
      */
     const QUERY_ALIAS = 'r';
 
-
     /** ************* */
     /** F I N D E R S */
 
-
     /** *************** */
     /** B U I L D E R S */
-
-
 }

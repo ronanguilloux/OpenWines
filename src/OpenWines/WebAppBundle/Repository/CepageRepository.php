@@ -2,10 +2,7 @@
 
 namespace OpenWines\WebAppBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\NoResultException;
-use Doctrine\ORM\QueryBuilder;
 
 /**
  * CepageRepository
@@ -20,26 +17,24 @@ class CepageRepository extends BaseRepository
      */
     const QUERY_ALIAS = 'c';
 
-
     /** ************* */
     /** F I N D E R S */
-
     public function findByAppellationOrderByName($AppellationId)
     {
         $query = $this->getEntityManager()
-            ->createQuery('
+            ->createQuery(
+                '
             SELECT c, a FROM OpenWinesWebAppBundle:Appellation a
             INNER JOIN a.Appellation a
             WHERE a.id = :id'
-            )->setParameter('id', (int)$AppellationId);
+            )->setParameter('id', (int) $AppellationId);
         try {
             return $query->getSingleResult();
         } catch (NoResultException $e) {
-            return null;
+            return;
         }
     }
 
     /** *************** */
     /** B U I L D E R S */
-
 }

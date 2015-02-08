@@ -5,11 +5,8 @@
  * Date: 29/05/2014
  * Time: 17:12
  */
-
 namespace OpenWines\WebAppBundle\EventListener\Kernel;
 
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpFoundation\Response;
 use JMS\Serializer\Serializer;
@@ -36,8 +33,8 @@ class ApiResponseListener
         $format     = $event->getRequest()->attributes->get('_format');
         $controller = $event->getRequest()->attributes->get('_controller');
 
-        if('html' === $format) {
-            if(!is_array($data)){
+        if ('html' === $format) {
+            if (!is_array($data)) {
                 $data = ['data', $data];
             }
             $template = $this->guessTemplateName($controller);
@@ -45,10 +42,11 @@ class ApiResponseListener
             $response = new Response($content, 200);
 
             $event->setResponse($response);
+
             return;
         }
 
-        if(!in_array($format, ['json', 'xml'])) {
+        if (!in_array($format, ['json', 'xml'])) {
             throw new \Exception(sprintf("%s format is not supported yet!", $format));
         }
 
@@ -57,8 +55,6 @@ class ApiResponseListener
         $content     = $this->serializer->serialize($data, $format);
 
         $event->setResponse(new Response($content, 200, ['Content-Type' => $contentType]));
-
-
     }
 
     /**
@@ -74,8 +70,8 @@ class ApiResponseListener
         $bundleMember        = [];
         $explodedController  = explode('::', array_pop($exploded));
 
-        foreach($exploded as $member) {
-            if('Controller' === $member) {
+        foreach ($exploded as $member) {
+            if ('Controller' === $member) {
                 break;
             }
             $bundleMember[] = $member;
@@ -91,9 +87,5 @@ class ApiResponseListener
             $controllerName,
             $actionName
         );
-
-
-
     }
-
 }

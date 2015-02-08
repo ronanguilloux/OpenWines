@@ -5,7 +5,6 @@
  * Date: 29/05/2014
  * Time: 17:41
  */
-
 namespace OpenWines\WebAppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -56,7 +55,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @ORM\Table(name="vignoble")
  * @ORM\HasLifecycleCallbacks
  **/
-Class Vignoble
+class Vignoble
 {
 
     /**
@@ -114,7 +113,8 @@ Class Vignoble
     /**
      * .ctor()
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->appellations = new ArrayCollection();
     }
 
@@ -137,7 +137,7 @@ Class Vignoble
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -147,7 +147,7 @@ Class Vignoble
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string   $name
      * @return Vignoble
      */
     public function setName($name)
@@ -160,7 +160,7 @@ Class Vignoble
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -170,7 +170,7 @@ Class Vignoble
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string   $description
      * @return Vignoble
      */
     public function setDescription($description)
@@ -183,7 +183,7 @@ Class Vignoble
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -193,12 +193,12 @@ Class Vignoble
     /**
      * Set departments
      *
-     * @param string $departments
+     * @param  string   $departments
      * @return Vignoble
      */
     public function setDepartments($departments)
     {
-        if(is_array($departments)) {
+        if (is_array($departments)) {
             $departments = implode('|', $departments);
         }
 
@@ -210,7 +210,7 @@ Class Vignoble
     /**
      * Get departments
      *
-     * @return string 
+     * @return string
      */
     public function getDepartments()
     {
@@ -220,7 +220,7 @@ Class Vignoble
     /**
      * Set area
      *
-     * @param string $area
+     * @param  string   $area
      * @return Vignoble
      */
     public function setArea($area)
@@ -233,7 +233,7 @@ Class Vignoble
     /**
      * Get area
      *
-     * @return string 
+     * @return string
      */
     public function getArea()
     {
@@ -243,7 +243,7 @@ Class Vignoble
     /**
      * Set more
      *
-     * @param string $more
+     * @param  string   $more
      * @return Vignoble
      */
     public function setMore($more)
@@ -263,7 +263,7 @@ Class Vignoble
      */
     public function getMore()
     {
-        if (false !== strpos($this->more, ',')){
+        if (false !== strpos($this->more, ',')) {
             return explode(',', $this->more);
         }
 
@@ -273,7 +273,7 @@ Class Vignoble
     /**
      * Add Appellations
      *
-     * @param \OpenWines\WebAppBundle\Entity\Appellation $appellations
+     * @param  \OpenWines\WebAppBundle\Entity\Appellation $appellations
      * @return Vignoble
      */
     public function addAppellation(\OpenWines\WebAppBundle\Entity\Appellation $appellations)
@@ -306,7 +306,7 @@ Class Vignoble
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime   $createdAt
      * @return Appellation
      */
     public function setCreatedAt($createdAt)
@@ -329,7 +329,7 @@ Class Vignoble
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime   $updatedAt
      * @return Appellation
      */
     public function setUpdatedAt($updatedAt)
@@ -348,5 +348,4 @@ Class Vignoble
     {
         return $this->updatedAt;
     }
-
 }

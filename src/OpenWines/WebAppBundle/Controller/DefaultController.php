@@ -4,8 +4,6 @@ namespace OpenWines\WebAppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use OpenWines\WebAppBundle\Controller\BaseController;
 
 /**
  * Class DefaultController
@@ -27,10 +25,10 @@ class DefaultController extends BaseController
         $hateoasRoutes  = ['vignobles'];
         $baseUrl        = $this->getBaseUrl($request);
         $routes         = [];
-        foreach($hateoasRoutes as $route) {
+        foreach ($hateoasRoutes as $route) {
             $routes[]   = [
                 'label' => $route,
-                'href'  => sprintf("%s/%s.%s", $baseUrl, $route, $format)
+                'href'  => sprintf("%s/%s.%s", $baseUrl, $route, $format),
             ];
         }
 
@@ -48,7 +46,7 @@ class DefaultController extends BaseController
             ->getDoctrine()
             ->getManager()
             ->getRepository('OpenWinesWebAppBundle:Vignoble')
-            ->findAllOrderByName()];
+            ->findAllOrderByName(), ];
     }
 
     /**
@@ -64,7 +62,7 @@ class DefaultController extends BaseController
             ->getDoctrine()
             ->getManager()
             ->getRepository('OpenWinesWebAppBundle:Vignoble')
-            ->find($id)];
+            ->find($id), ];
     }
 
     /**
@@ -82,13 +80,14 @@ class DefaultController extends BaseController
             ->getRepository('OpenWinesWebAppBundle:Vignoble')
             ->find($vignobleId)
         ;
+
         return [
             'vignoble' => $vignoble,
             'appellations' => $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('OpenWinesWebAppBundle:Appellation')
-            ->findByVignoble($vignoble)];
+            ->findByVignoble($vignoble), ];
     }
 
     /**
@@ -107,13 +106,14 @@ class DefaultController extends BaseController
             ->getRepository('OpenWinesWebAppBundle:Vignoble')
             ->find($vignobleId)
         ;
+
         return [
             'vignoble' => $vignoble,
             'appellation' => $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('OpenWinesWebAppBundle:Appellation')
-            ->find($id)];
+            ->find($id), ];
     }
 
     /**
@@ -138,11 +138,11 @@ class DefaultController extends BaseController
             ->getRepository('OpenWinesWebAppBundle:Vignoble')
             ->find($vignobleId)
         ;
+
         return ['cepages' => $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('OpenWinesWebAppBundle:Cepage')
-            ->findByAppellation($AppellationId)];
+            ->findByAppellation($AppellationId), ];
     }
-
 }

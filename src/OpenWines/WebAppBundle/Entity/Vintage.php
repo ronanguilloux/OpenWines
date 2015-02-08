@@ -5,11 +5,10 @@
  * Date: 02/12/2014
  * Time: 13:37
  */
-
 namespace OpenWines\WebAppBundle\Entity;
 
-
-class Vintage {
+class Vintage
+{
     /**
      * @Serializer\Exclude
      * @ORM\Id
@@ -56,7 +55,7 @@ class Vintage {
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string  $description
      * @return Vintage
      */
     public function setDescription($description)
@@ -76,11 +75,10 @@ class Vintage {
         return $this->description;
     }
 
-
     /**
      * Set Appellation
      *
-     * @param \OpenWines\WebAppBundle\Entity\Appellation $appellation
+     * @param  \OpenWines\WebAppBundle\Entity\Appellation $appellation
      * @return Vintage
      */
     public function setAppellation(\OpenWines\WebAppBundle\Entity\Appellation $appellation = null)
@@ -103,7 +101,7 @@ class Vintage {
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime $createdAt
      * @return Vintage
      */
     public function setCreatedAt($createdAt)
@@ -126,7 +124,7 @@ class Vintage {
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime $updatedAt
      * @return Vintage
      */
     public function setUpdatedAt($updatedAt)
@@ -145,5 +143,4 @@ class Vintage {
     {
         return $this->updatedAt;
     }
-
-} 
+}

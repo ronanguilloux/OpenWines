@@ -3,7 +3,6 @@
 namespace OpenWines\WebAppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use Hateoas\Configuration\Annotation as Hateoas;
 
@@ -66,7 +65,7 @@ class Cepage
 
     /**
      * @var string
-     * ex: "Noiriens" (http://fr.wikipedia.org/wiki/Famille_des_Noiriens)
+     *             ex: "Noiriens" (http://fr.wikipedia.org/wiki/Famille_des_Noiriens)
      *
      * @ORM\Column
      */
@@ -97,7 +96,7 @@ class Cepage
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -107,7 +106,7 @@ class Cepage
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Cepage
      */
     public function setName($name)
@@ -120,7 +119,7 @@ class Cepage
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -130,7 +129,7 @@ class Cepage
     /**
      * Set more
      *
-     * @param string $more
+     * @param  string $more
      * @return Cepage
      */
     public function setMore($more)
@@ -150,18 +149,17 @@ class Cepage
      */
     public function getMore()
     {
-        if (false !== strpos($this->more, ',')){
+        if (false !== strpos($this->more, ',')) {
             return explode(',', $this->more);
         }
 
         return $this->more;
     }
 
-
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime $createdAt
      * @return Cepage
      */
     public function setCreatedAt($createdAt)
@@ -174,7 +172,7 @@ class Cepage
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -184,7 +182,7 @@ class Cepage
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime $updatedAt
      * @return Cepage
      */
     public function setUpdatedAt($updatedAt)
@@ -197,7 +195,7 @@ class Cepage
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -207,7 +205,7 @@ class Cepage
     /**
      * Set Appellation
      *
-     * @param \OpenWines\WebAppBundle\Entity\Appellation $appellation
+     * @param  \OpenWines\WebAppBundle\Entity\Appellation $appellation
      * @return Cepage
      */
     public function setAppellation(\OpenWines\WebAppBundle\Entity\Appellation $appellation = null)
@@ -230,7 +228,7 @@ class Cepage
     /**
      * Set famille
      *
-     * @param string $famille
+     * @param  string $famille
      * @return Cepage
      */
     public function setFamille($famille)
@@ -243,7 +241,7 @@ class Cepage
     /**
      * Get famille
      *
-     * @return string 
+     * @return string
      */
     public function getFamille()
     {

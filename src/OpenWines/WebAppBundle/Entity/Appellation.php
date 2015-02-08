@@ -5,14 +5,12 @@
  * Date: 29/05/2014
  * Time: 17:41
  */
-
 namespace OpenWines\WebAppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use Hateoas\Configuration\Annotation as Hateoas;
-
 
 /**
  * @Hateoas\Relation(
@@ -58,7 +56,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @ORM\Table(name="appellation")
  * @ORM\HasLifecycleCallbacks
  */
-Class Appellation
+class Appellation
 {
     /**
      * @Serializer\Exclude
@@ -100,7 +98,7 @@ Class Appellation
 
     /**
      * @ORM\Column(name="production", type="integer", nullable=true, options={"comment" = "hectolitres"})
-    * ex: "317500" (in hectolitre)
+     * ex: "317500" (in hectolitre)
      */
     private $production;
 
@@ -116,7 +114,6 @@ Class Appellation
      */
     private $wine_type;
 
-
     /**
      * @ORM\Column(name="description", type="text", nullable=true)
      */
@@ -127,7 +124,7 @@ Class Appellation
      * @Serializer\Exclude because we list this as a HATEOAS relation
      */
     private $more;
-    
+
     /**
      * @var \DateTime
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -143,7 +140,8 @@ Class Appellation
     /**
      * .ctor()
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->cepages = new ArrayCollection();
     }
 
@@ -166,7 +164,7 @@ Class Appellation
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -176,7 +174,7 @@ Class Appellation
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string      $name
      * @return Appellation
      */
     public function setName($name)
@@ -189,7 +187,7 @@ Class Appellation
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -199,7 +197,7 @@ Class Appellation
     /**
      * Set type
      *
-     * @param string $type
+     * @param  string      $type
      * @return Appellation
      */
     public function setType($type)
@@ -212,7 +210,7 @@ Class Appellation
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -222,7 +220,7 @@ Class Appellation
     /**
      * Set vignoble
      *
-     * @param \OpenWines\WebAppBundle\Entity\Vignoble $vignoble
+     * @param  \OpenWines\WebAppBundle\Entity\Vignoble $vignoble
      * @return Appellation
      */
     public function setVignoble(\OpenWines\WebAppBundle\Entity\Vignoble $vignoble = null)
@@ -245,7 +243,7 @@ Class Appellation
     /**
      * Add cepages
      *
-     * @param \OpenWines\WebAppBundle\Entity\Cepage $cepages
+     * @param  \OpenWines\WebAppBundle\Entity\Cepage $cepages
      * @return Appellation
      */
     public function addCepage(\OpenWines\WebAppBundle\Entity\Cepage $cepages)
@@ -278,7 +276,7 @@ Class Appellation
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime   $createdAt
      * @return Appellation
      */
     public function setCreatedAt($createdAt)
@@ -291,7 +289,7 @@ Class Appellation
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -301,7 +299,7 @@ Class Appellation
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime   $updatedAt
      * @return Appellation
      */
     public function setUpdatedAt($updatedAt)
@@ -324,7 +322,7 @@ Class Appellation
     /**
      * Set more
      *
-     * @param string $more
+     * @param  string      $more
      * @return Appellation
      */
     public function setMore($more)
@@ -344,8 +342,8 @@ Class Appellation
      */
     public function getMore()
     {
-        if (false !== strpos($this->more, ',')){
-           return explode(',', $this->more);
+        if (false !== strpos($this->more, ',')) {
+            return explode(',', $this->more);
         }
 
         return $this->more;
@@ -354,7 +352,7 @@ Class Appellation
     /**
      * Set area
      *
-     * @param string $area
+     * @param  string      $area
      * @return Appellation
      */
     public function setArea($area)
@@ -367,7 +365,7 @@ Class Appellation
     /**
      * Get area
      *
-     * @return string 
+     * @return string
      */
     public function getArea()
     {
@@ -377,7 +375,7 @@ Class Appellation
     /**
      * Set production
      *
-     * @param integer $production
+     * @param  integer     $production
      * @return Appellation
      */
     public function setProduction($production)
@@ -390,7 +388,7 @@ Class Appellation
     /**
      * Get production
      *
-     * @return integer 
+     * @return integer
      */
     public function getProduction()
     {
@@ -400,7 +398,7 @@ Class Appellation
     /**
      * Set soil
      *
-     * @param string $soil
+     * @param  string      $soil
      * @return Appellation
      */
     public function setSoil($soil)
@@ -420,7 +418,7 @@ Class Appellation
      */
     public function getSoil()
     {
-        if (false !== strpos($this->soil, ',')){
+        if (false !== strpos($this->soil, ',')) {
             return explode(',', $this->soil);
         }
 
@@ -430,7 +428,7 @@ Class Appellation
     /**
      * Set wine
      *
-     * @param string $wine
+     * @param  string      $wine
      * @return Appellation
      */
     public function setWine($wine)
@@ -443,7 +441,7 @@ Class Appellation
     /**
      * Get wine
      *
-     * @return string 
+     * @return string
      */
     public function getWine()
     {
@@ -453,7 +451,7 @@ Class Appellation
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string      $description
      * @return Appellation
      */
     public function setDescription($description)
@@ -466,7 +464,7 @@ Class Appellation
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -476,7 +474,7 @@ Class Appellation
     /**
      * Set wine_type
      *
-     * @param string $wineType
+     * @param  string      $wineType
      * @return Appellation
      */
     public function setWineType($wineType)
@@ -489,7 +487,7 @@ Class Appellation
     /**
      * Get wine_type
      *
-     * @return string 
+     * @return string
      */
     public function getWineType()
     {
@@ -499,7 +497,7 @@ Class Appellation
     /**
      * Set appelation_type
      *
-     * @param string $appelationType
+     * @param  string      $appelationType
      * @return Appellation
      */
     public function setAppelationType($appelationType)
@@ -512,7 +510,7 @@ Class Appellation
     /**
      * Get appelation_type
      *
-     * @return string 
+     * @return string
      */
     public function getAppelationType()
     {

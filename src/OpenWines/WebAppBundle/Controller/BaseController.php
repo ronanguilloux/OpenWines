@@ -5,7 +5,6 @@
  * Date: 29/05/2014
  * Time: 11:17
  */
-
 namespace OpenWines\WebAppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,11 +25,11 @@ abstract class BaseController extends Controller
         $kernel = $this->get('kernel');
         $kernel->getEnvironment(); // prod, dev, test
         $baseUrl = $request->getSchemeAndHttpHost();
-        if('dev' === $kernel->getEnvironment()) { // prod, dev, test
+        if ('dev' === $kernel->getEnvironment()) {
+            // prod, dev, test
             $baseUrl .= "/app_dev.php";
         }
 
         return $baseUrl;
     }
-
 }
