@@ -33,12 +33,13 @@ SET search_path TO openwines, public;
 ## CLI examples
 
 ```bash
-php app/console pomm:inspect:database openwines
-php app/console pomm:inspect:schema openwines openwines
+php app/console pomm:inspect:database db
+php app/console pomm:inspect:schema db openwines
+php app/console pomm:inspect:relation db vignoble openwines
 ```
 
 ## CLI : creating Schema PHP Class
 
 ```bash
-php app/console pomm:generate:schema-all -d src -a 'OpenWines\AppBundle\Model' openwines openwines
+php app/console pomm:generate:schema-all -d src -a 'OpenWines\AppBundle' db openwines
 ```
