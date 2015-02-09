@@ -1,5 +1,12 @@
 
+## Installation
 
+```bash
+git clone https://github.com/ronanguilloux/OpenWines.git
+git checkout postgresql
+```
+
+Install a PostgreSQL server (tip: for OS X, use [Postgres.app](http://postgresapp.com/))
 
 
 ## Using [`Postgres.app`](http://postgresapp.com) on OS X
@@ -8,7 +15,7 @@
 /Applications/Postgres.app/Contents/Versions/9.3/bin/createdb openwines
 ```
 
-## Using SQL (via pgadmin, etc.)
+## Using SQL (via psql, etc.)
 
 ```sql
 CREATE DATABASE openwines

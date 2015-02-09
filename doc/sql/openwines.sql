@@ -1,3 +1,16 @@
+CREATE TABLE IF NOT EXISTS openwines.vignoble (
+  id                INT PRIMARY KEY     NOT NULL,
+  name              VARCHAR(255)        NULL,
+  description       TEXT                NULL,
+  departments       INT[]               NULL,
+  area              INT                 NULL,
+  more              TEXT                NULL,
+  created_at        TIMESTAMPTZ         NOT NULL,
+  updated_at        TIMESTAMPTZ         NOT NULL
+);
+
+COMMENT ON COLUMN openwines.vignoble.area IS 'hectares';
+
 CREATE TABLE IF NOT EXISTS openwines.appellation (
   id                INT PRIMARY KEY     NOT NULL,
   vignoble_id       INT                 NOT NULL,
@@ -18,15 +31,3 @@ COMMENT ON COLUMN openwines.appellation.production IS 'hectoliters';
 COMMENT ON COLUMN openwines.appellation.soil IS 'soil types';
 
 
-CREATE TABLE IF NOT EXISTS openwines.vignoble (
-  id                INT PRIMARY KEY     NOT NULL,
-  name              VARCHAR(255)        NULL,
-  description       TEXT                NULL,
-  departments       INT[]               NULL,
-  area              INT                 NULL,
-  more              TEXT                NULL,
-  created_at        TIMESTAMPTZ         NOT NULL,
-  updated_at        TIMESTAMPTZ         NOT NULL
-);
-
-COMMENT ON COLUMN openwines.vignoble.area IS 'hectares';
