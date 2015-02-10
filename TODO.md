@@ -1,0 +1,8 @@
+- [x] Rename AOC into `Appellation` (which is used both in english & french)
+- [ ] Get ride of Doctrine2 and use PostgreSql 9.4 with POMM 2.0 (because [POMM 2.0](http://www.pomm-project.org/) is sooooo january 2015)
+- [ ] Write a RAML API definition (because [RAML](http://raml.org/) is sooooo february 2015)
+- [ ] Use RAML API definition to set up a REST API using [GoIntegro/hateoas-bundle](https://github.com/GoIntegro/hateoas-bundle)
+- [ ] i18N all the things!
+- [ ] start with the [Vins de Loire](http://www.vinsvaldeloire.fr/SiteGP/FR/)
+- [ ] Add a `millésime` / `vintage` entity: http://goo.gl/k7R0nS
+- [ ] Evaluate https://github.com/stanlemon/rest-bundle
