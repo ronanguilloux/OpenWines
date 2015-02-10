@@ -35,12 +35,14 @@
 # some lines may be useless for now, but these are nice tricks:
 PWD         := $(shell pwd)
 # Retrieve db connection params, triming white spaces
-DB_USER	    := $(shell if [ -f app/config/parameters.yml ] ; then cat app/config/parameters.yml | grep 'database_user' | sed 's/database_user: //' | sed 's/^ *//;s/ *$$//' ; fi)
-DB_PASSWORD := $(shell if [ -f app/config/parameters.yml ] ; then cat app/config/parameters.yml | grep 'database_password' | sed 's/database_password: //' | sed 's/null//' | sed 's/^ *//;s/ *$$//' ; fi)
-DB_NAME     := $(shell if [ -f app/config/parameters.yml ] ; then cat app/config/parameters.yml | grep 'database_name' | sed 's/database_name: //' | sed 's/^ *//;s/ *$$//' ; fi)
+DB_HOST	    := $(shell if [ -f app/config/parameters.yml ] ; then cat app/config/parameters.yml | grep 'db_host' | sed 's/db_host: //' | sed 's/^ *//;s/ *$$//' ; fi)
+DB_USER	    := $(shell if [ -f app/config/parameters.yml ] ; then cat app/config/parameters.yml | grep 'db_user' | sed 's/db_user: //' | sed 's/^ *//;s/ *$$//' ; fi)
+DB_PASSWORD := $(shell if [ -f app/config/parameters.yml ] ; then cat app/config/parameters.yml | grep 'db_password' | sed 's/db_password: //' | sed 's/null//' | sed 's/^ *//;s/ *$$//' ; fi)
+DB_NAME     := $(shell if [ -f app/config/parameters.yml ] ; then cat app/config/parameters.yml | grep 'db_name' | sed 's/db_name: //' | sed 's/^ *//;s/ *$$//' ; fi)
 VENDOR_PATH := $(PWD)/vendor
 BIN_PATH    := $(PWD)/bin
 WEB_PATH    := $(PWD)/web
+SQL_DATA    := $(PWD)/src/OpenWines/AppBundle/Resources/sql/openwines.sql
 NOW         := $(shell date +%Y-%m-%d--%H-%M-%S)
 REPO        := "https://github.com/..."
 BRANCH      := 'master'
@@ -76,24 +78,38 @@ integration:
 	@gulp build
 	@cd ../
 
+############################################################################
+# PostgreSQL tasks
+
 dumps:
 	@echo "Creating dump folder for SQL exports..."
 	@mkdir ./dumps
 
-mysqldump: dumps
+dump: dumps
 	@echo "Dumping existing db into ./dumps ..."
-	@mysqldump --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} > dumps/${NOW}.sql 2>/dev/null
+#	pg_dump -h 127.0.0.1 -d openwines -U $USER
+	@pg_dump -h ${DB_HOST} -U ${DB_USER} -d ${DB_NAME} > dumps/${NOW}.sql
 
-mysqlinfo: dumps
-	@echo "mysql --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME}"
+psql:
+	@psql -h ${DB_HOST} -U ${DB_USER} -d ${DB_NAME}
 
-data: vendor/autoload.php
-#	@echo "Install initial datas..."
-#	@php app/console dbal:data:initialize --purge
+insertData: vendor/autoload.php
+	@echo "Install initial datas..."
+	@psql -h ${DB_HOST} -U ${DB_USER} -d ${DB_NAME} < ${SQL_DATA}
 
 fixtures: vendor/autoload.php
 #	@echo "Install fixtures in db..."
 #	@php app/console dbal:fixtures:load --purge
+
+dropDb: vendor/autoload.php dump
+	@echo
+	@echo "Drop database ${DB_NAME}..."
+	@dropdb ${DB_NAME}
+
+createDb: vendor/autoload.php
+	@echo
+	@echo "Create database ${DB_NAME}...".
+	@createdb ${DB_NAME}
 
 ############################################################################
 # Generic sf2 tasks:
@@ -118,21 +134,6 @@ pull:
 	@git pull origin $(BRANCH)
 
 
-dropDb: vendor/autoload.php mysqldump
-	@echo
-	@echo "Drop database..."
-	@php app/console doctrine:database:drop --force
-
-createDb: vendor/autoload.php
-	@echo
-	@echo "Create database..."
-	@php app/console doctrine:database:create
-	@php app/console doctrine:schema:update --force
-
-schemaDb: vendor/autoload.php mysqldump
-	@echo
-	@echo "Configure database schema..."
-	@php app/console doctrine:schema:update --force
 
 assets:
 	@echo "\nPublishing assets..."
@@ -211,11 +212,9 @@ done:
 
 all: vendor/autoload.php check
 
-prepareDb: createDb schemaDb
+purgeDb: dropDb createDb
 
-purgeDb: dropDb createDb schemaDb
-
-install: prepareDb data assets clear done
+install: createDb insertData assets clear done
 
 reinstall: dropDb install
 
@@ -224,7 +223,7 @@ tests: reinstall fixtures behavior unit codecoverage
 ############################################################################
 # .PHONY tasks list
 
-.PHONY: integration data fixtures help check all pull dropDb createDb myqldump
+.PHONY: integration insertData fixtures help check all pull dropDb createDb dump psql
 .PHONY: schemaDb assets clear explain behavior unit codecoverage
 .PHONY: continuous sniff dry-fix cs-fix quality stats deploy done prepareDb purgeDb
 .PHONY: install reinstall test update robot unrobot

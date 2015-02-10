@@ -1,34 +1,25 @@
 
 ## Installation
 
+Install a PostgreSQL server
+(tip: for OS X, use [Postgres.app](http://postgresapp.com))
+
+Then clone & configure:
+
 ```bash
 git clone https://github.com/ronanguilloux/OpenWines.git
 git checkout postgresql
+make
+make install
 ```
 
-Install a PostgreSQL server (tip: for OS X, use [Postgres.app](http://postgresapp.com/))
+What it does:
 
+- Makefile reads your `app/config/parameters.yml` database connection
+- Makefile uses a database dump located in `./src/OpenWines/AppBundle/Resources/sql/openwines.sql`
+- `make` command add a pre-commit php style checker, installs vendors, run Symfony environment checker then outputs th help message
+- `make install` command creates PostGreSql database & schema, inserts data, generates assets then clear caches and output a "done." final message
 
-## Using [`Postgres.app`](http://postgresapp.com) on OS X
-
-```bash
-/Applications/Postgres.app/Contents/Versions/9.3/bin/createdb openwines
-```
-
-## Using SQL (via psql, etc.)
-
-```sql
-CREATE DATABASE openwines
-  WITH OWNER = postgres
-       ENCODING = 'UTF8'
-       TABLESPACE = pg_default
-       LC_COLLATE = 'fr_FR.UTF-8'
-       LC_CTYPE = 'fr_FR.UTF-8'
-       CONNECTION LIMIT = -1;
-CREATE SCHEMA IF NOT EXISTS openwines;
-SET search_path TO openwines, public;
-``
-`
 
 ## CLI examples
 
