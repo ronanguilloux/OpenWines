@@ -23,5 +23,5 @@ web/client/node_modules/*
 # Other
 /build/
 /bin/
-/.idea/
+/dumps/
 
