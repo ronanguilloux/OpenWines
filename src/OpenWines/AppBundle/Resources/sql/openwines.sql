@@ -1,18 +1,20 @@
-CREATE TABLE IF NOT EXISTS openwines.vignoble (
-  id                SERIAL,
+CREATE SCHEMA openwines;
+SET search_path TO openwines, public;
+
+CREATE TABLE openwines.vignoble (
+  id                SERIAL PRIMARY KEY,
   name              VARCHAR(255)        NULL,
   description       TEXT                NULL,
   departments       INT[]               NULL,
   area              INT                 NULL,
   more              TEXT                NULL,
   created_at        TIMESTAMPTZ         NOT NULL,
-  updated_at        TIMESTAMPTZ         NOT NULL,
-  CONSTRAINT "PKey" PRIMARY KEY ("id")
+  updated_at        TIMESTAMPTZ         NOT NULL
 );
 
 COMMENT ON COLUMN openwines.vignoble.area IS 'hectares';
 
-INSERT INTO oenwines.vignoble (name, description, departments, area, more, created_at, updated_at) VALUES
+INSERT INTO openwines.vignoble (name, description, departments, area, more, created_at, updated_at) VALUES
 ('Alsace', 'grand terroir', NULL, NULL, 'http://fr.wikipedia.org/wiki/Vignoble_d%27Alsace', '2014-05-30 00:00:00 Europe/Paris', '2014-05-30 00:00:00 Europe/Paris'),
 ('Beaujolais', 'grand terroir', NULL, NULL, 'http://fr.wikipedia.org/wiki/Vignoble_du_Beaujolais', '2014-05-30 00:00:00 Europe/Paris', '2014-05-30 00:00:00 Europe/Paris'),
 ('Bordeaux', 'grand terroir', NULL, NULL, 'http://fr.wikipedia.org/wiki/Vignoble_de_Bordeaux', '2014-05-30 00:00:00 Europe/Paris', '2014-05-30 00:00:00 Europe/Paris'),
@@ -41,12 +43,8 @@ INSERT INTO oenwines.vignoble (name, description, departments, area, more, creat
 ('Bretagne', 'terroir disparu', NULL, NULL, 'http://fr.wikipedia.org/wiki/Vignoble_de_Bretagne', '2014-05-30 00:00:00 Europe/Paris', '2014-05-30 00:00:00 Europe/Paris'),
 ('Nord-Pas-de-Calais', 'terroir disparu', NULL, NULL, 'http://fr.wikipedia.org/wiki/Vignoble_du_Nord-Pas-de-Calais', '2014-05-30 00:00:00 Europe/Paris', '2014-05-30 00:00:00 Europe/Paris');
 
-
-
-
-
-CREATE TABLE IF NOT EXISTS openwines.appellation (
-  id                SERIAL,
+CREATE TABLE openwines.appellation (
+  id                SERIAL PRIMARY KEY,
   vignoble_id       INT                 NOT NULL,
   appelation_type   VARCHAR(255)        NOT NULL,
   name              VARCHAR(255)        NOT NULL,
@@ -57,8 +55,7 @@ CREATE TABLE IF NOT EXISTS openwines.appellation (
   description       TEXT                NULL,
   more              TEXT                NULL,
   created_at        TIMESTAMPTZ         NULL,
-  updated_at        TIMESTAMPTZ         NULL,
-  CONSTRAINT "PKey" PRIMARY KEY ("id")
+  updated_at        TIMESTAMPTZ         NULL
 );
 
 COMMENT ON COLUMN openwines.appellation.area IS 'hectares';
