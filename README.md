@@ -27,8 +27,7 @@ Install a PostgreSQL server
 Then clone & configure:
 
 ```bash
-git clone https://github.com/ronanguilloux/OpenWines.git
-git checkout postgresql
+git clone -b postgresql https://github.com/ronanguilloux/OpenWines.git
 make
 make install
 ```
