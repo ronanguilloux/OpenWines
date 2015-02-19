@@ -57,7 +57,7 @@ raml2md api.raml  > api.md
 
 Read it locally:
 
-``bash
+```bash
 [open/xdg-open] api.html
 [open/xdg-open] api.md
 ```
