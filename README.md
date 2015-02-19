@@ -31,7 +31,7 @@ A specific vineyard
 
 ![RAML logo](doc/Raml/raml.png)
 
-The API reference is [generated with RAML](http://raml.org) & [NPM](https://www.npmjs.com)
+The API reference is [generated with RAML](http://raml.org)
 
 Check out the [API reference in a single HTML page](http://htmlpreview.github.io/?https://github.com/ronanguilloux/OpenWines/blob/postgresql/doc/Raml/OpenWines_API-v1/api.html)
 
