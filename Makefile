@@ -1,10 +1,10 @@
 #
 # Makefile
-# Les Polypodes, 2014
+# Ronan Guilloux 2015
 # Licence: MIT
-# Source: https://github.com/polypodes/Build-and-Deploy/blob/master/build/Makefile
+# Inspired by: https://github.com/polypodes/Build-and-Deploy/blob/master/build/Makefile
 
-# To enable this quality-related tasks, add these dependencies to your composer.json:
+# To allow `make quality` task to run with success, add these dependencies to your composer.json:
 # they'll be available in the ./bin dir :
 #
 #    "require-dev": {
@@ -32,7 +32,6 @@
 ############################################################################
 # Vars
 
-# some lines may be useless for now, but these are nice tricks:
 PWD         := $(shell pwd)
 # Retrieve db connection params, triming white spaces
 DB_HOST	    := $(shell if [ -f app/config/parameters.yml ] ; then cat app/config/parameters.yml | grep 'db_host' | sed 's/db_host: //' | sed 's/^ *//;s/ *$$//' ; fi)
@@ -70,7 +69,7 @@ vendor/autoload.php:
 	@chmod +x .git/hooks/pre-commit
 
 ############################################################################
-# Specific, project-related sf2 tasks:
+# Front-end related task
 
 integration:
 	@echo
@@ -98,6 +97,7 @@ insertData: vendor/autoload.php
 	@psql -h ${DB_HOST} -U ${DB_USER} -d ${DB_NAME} < ${SQL_DATA}
 
 fixtures: vendor/autoload.php
+# 	nothing for now
 #	@echo "Install fixtures in db..."
 #	@php app/console dbal:fixtures:load --purge
 
@@ -133,8 +133,6 @@ check:
 pull:
 	@git pull origin $(BRANCH)
 
-
-
 assets:
 	@echo "\nPublishing assets..."
 	@php app/console assets:install --symlink
@@ -158,7 +156,7 @@ unit: vendor/autoload.php
 	@php bin/phpunit -c build/phpunit.xml -v
 
 codecoverage: vendor/autoload.php
-	@echo "Run coverage tests..."
+	@echo "Generate coverage reports..."
 	@bin/phpunit -c build/phpunit.xml -v --coverage-html ./build/codecoverage
 
 continuous: vendor/autoload.php
@@ -178,11 +176,11 @@ cs-fix:
 #quality must remain quiet, as far as it's used in a pre-commit hook validation
 quality: sniff dry-fix
 
-build:
+builds:
 	@mkdir -p build/pdepend
 
 # packagist-based dev tools to add to your composer.json. See http://phpqatools.org
-stats: quality build
+stats: quality builds
 	@echo "Some stats about code quality"
 	@bin/phploc src
 	@bin/phpcpd src
@@ -210,8 +208,6 @@ done:
 
 # Tasks sets:
 
-all: vendor/autoload.php check
-
 purgeDb: dropDb createDb
 
 install: createDb insertData assets clear done
@@ -224,7 +220,7 @@ tests: reinstall fixtures behavior unit codecoverage
 # .PHONY tasks list
 
 .PHONY: integration insertData fixtures help check all pull dropDb createDb dump psql
-.PHONY: schemaDb assets clear explain behavior unit codecoverage
+.PHONY: schemaDb assets clear explain behavior unit codecoverage builds
 .PHONY: continuous sniff dry-fix cs-fix quality stats deploy done prepareDb purgeDb
 .PHONY: install reinstall test update robot unrobot
 # vim:ft=make
