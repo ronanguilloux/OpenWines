@@ -1,4 +1,22 @@
 # Schemas
+- vineyards: |
+    {
+      "$schema": "http://json-schema.org/draft-03/schema",
+      "type": "object",
+      "description": "A collection of vineyards",
+      "properties": {
+        "size":  {
+          "type": "integer",
+          "required": true
+        },
+        "vineyards": {
+          "type": "array",
+          "items": {
+            "$ref": "vineyard"
+          }
+        }
+      }
+    }
 - vineyard: |
     {
       "type": "object",

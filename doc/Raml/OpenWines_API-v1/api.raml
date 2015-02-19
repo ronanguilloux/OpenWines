@@ -10,9 +10,6 @@ schemas: !include schemas.raml
 resourceTypes: !include resourceTypes.raml
 traits: !include traits.raml
 /vineyards:
-  type: collection
-  get:
-    description: GET a collection of vineyards
-    is: [ paged ]
+  type: { collection: { example: !include examples/vineyard.raml } }
   /{id}:
-    type: item
+    type: { item: { example: !include examples/vineyard.raml } }

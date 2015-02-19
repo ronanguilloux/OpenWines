@@ -9,18 +9,56 @@ French Vineyards Open Data provider ; pet project for alcoholics developers.
 - __Work in Progress in the [`postgresql` branch](https://github.com/ronanguilloux/OpenWines/tree/postgresql)__
  
 
-## API documentation (with [RAML](http://raml.org) & [NPM](https://www.npmjs.com))
+## Current API Routes:
 
-See [Documentation portal (RAML format)](https://anypoint.mulesoft.com/apiplatform/web-appio/#/portals/apis/13139/versions/13779/pages/15467)
+[See full API reference here](https://anypoint.mulesoft.com/apiplatform/web-appio/#/portals/apis/13139/versions/13779/pages/15467#vineyards) (online documentation)
 
-Static HTML file generation:
+### /vineyards
+Collection of vineyards
+
+#### /vineyards
+
+* **get**: Get all vineyards
+* **post**: Create new vineyard
+
+#### /vineyards/{id}
+A specific vineyard
+
+* **get**: Get a specific vineyard
+* **put**: Update a single vineyard
+* **delete**: This method will *delete* an individual **vineyard**
+
+## Online API documentation
+
+[![RAML logo](doc/raml.png)
+
+
+The API reference is [generated with RAML](http://raml.org) & [NPM](https://www.npmjs.com))
+
+See [Documentation portal and __try API online__](https://anypoint.mulesoft.com/apiplatform/web-appio/#/portals/apis/13139/versions/13779/pages/15467)
+
+## Generate your own static documentation :
+
+Install `aml2html` & `raml2md`, npm-based, cli-tools:
 
 ```bash
- cd doc/Raml/OpenWines_API-v1
- npm install -g raml2html
- raml2html api.raml > api.html
- [open/xdg-open] api.html
- ```
+cd doc/Raml/OpenWines_API-v1
+npm install -g raml2html raml2md
+```
+
+Generate API reference in HTML / Markdown formats
+
+```bash
+raml2htmlapi.raml > api.html
+raml2md api.raml  > api.md
+```
+
+Read it locally:
+
+``bash
+[open/xdg-open] api.html
+[open/xdg-open] api.md
+```
 
 ## TODO
 
