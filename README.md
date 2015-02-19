@@ -32,7 +32,7 @@ A specific vineyard
 
 ## Read reference & try API online using MuleSoft AnyPoint Portal
 
-[![RAML logo](doc/Raml/raml.png)]
+![RAML logo](doc/Raml/raml.png)
 
 The API reference is [generated with RAML](http://raml.org) & [NPM](https://www.npmjs.com))
 
