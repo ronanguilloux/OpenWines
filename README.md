@@ -28,13 +28,14 @@ A specific vineyard
 
 ## Read API documentation on Github
 
-[API reference in a single HTML page](http://htmlpreview.github.io/?https://github.com/ronanguilloux/OpenWines/blob/postgresql/doc/Raml/OpenWines_API-v1/api.html)
-
-## Read reference & try API online using MuleSoft AnyPoint Portal
 
 ![RAML logo](doc/Raml/raml.png)
 
-The API reference is [generated with RAML](http://raml.org) & [NPM](https://www.npmjs.com))
+The API reference is [generated with RAML](http://raml.org) & [NPM](https://www.npmjs.com)
+
+Check out the [API reference in a single HTML page](http://htmlpreview.github.io/?https://github.com/ronanguilloux/OpenWines/blob/postgresql/doc/Raml/OpenWines_API-v1/api.html)
+
+## Read reference & try API online using MuleSoft AnyPoint Portal
 
 See [Documentation portal and __try API online__](https://anypoint.mulesoft.com/apiplatform/web-appio/#/portals/apis/13139/versions/13779/pages/15467)
 
