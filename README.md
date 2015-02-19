@@ -9,6 +9,19 @@ French Vineyards Open Data provider ; pet project for alcoholics developers.
 - __Work in Progress in the [`postgresql` branch](https://github.com/ronanguilloux/OpenWines/tree/postgresql)__
  
 
+## API documentation (with [RAML](http://raml.org) & [NPM](https://www.npmjs.com))
+
+See [Documentation portal (RAML format)](https://anypoint.mulesoft.com/apiplatform/web-appio/#/portals/apis/13139/versions/13779/pages/15467)
+
+Static HTML file generation:
+
+```bash
+ cd doc/Raml/OpenWines_API-v1
+ npm install -g raml2html
+ raml2html api.raml > api.html
+ [open/xdg-open] api.html
+ ```
+
 ## TODO
 
 See [TODO.md](TODO.md)

@@ -1,0 +1,18 @@
+#%RAML 0.8
+title: OpenWines API
+version: v1
+baseUri: http://openwines.web-app.io
+mediaType: application/json
+documentation:
+ - title: OpenWines API
+   content: !include documentation.md
+schemas: !include schemas.raml
+resourceTypes: !include resourceTypes.raml
+traits: !include traits.raml
+/vineyards:
+  type: collection
+  get:
+    description: GET a collection of vineyards
+    is: [ paged ]
+  /{id}:
+    type: item

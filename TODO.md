@@ -1,6 +1,6 @@
 - [x] Rename AOC into `Appellation` (which is used both in english & french)
 - [ ] Get ride of Doctrine2 and use PostgreSql 9.4 with POMM 2.0 (because [POMM 2.0](http://www.pomm-project.org/) is sooooo january 2015)
-- [ ] Write a RAML API definition (because [RAML](http://raml.org/) is sooooo february 2015)
+- [x] Write a RAML [RAML](http://raml.org/) API definition
 - [ ] Use [a bundle to generate the API routes](https://github.com/creads/api2symfony-bundle)
 - [ ] Use RAML API definition to set up a REST API using [GoIntegro/hateoas-bundle](https://github.com/GoIntegro/hateoas-bundle)
 - [ ] i18N all the things!

@@ -1,0 +1,44 @@
+# Resource Types:
+- collection:
+    displayName: <<resourcePathName | !singularize>>
+    usage: This resourceType should be used for any collection of items
+    description: Collection of <<resourcePathName>>
+    get:
+      description: Get all <<resourcePathName>>
+      responses: 
+        200: 
+          body:
+            schema: <<resourcePathName>>
+    post:
+      description: Create new <<resourcePathName | !singularize>>
+      body: 
+        schema: <<resourcePathName | !singularize>> 
+      responses: 
+        200: 
+          body:
+            schema: <<resourcePathName | !singularize>>
+- item:
+    displayName: <<resourcePathName | !singularize>>
+    usage: This resourceType should be used for any item
+    description: A specific <<resourcePathName | !singularize>>
+    get: 
+      description: Get a specific <<resourcePathName | !singularize>>
+      responses:
+        200:
+          body:
+            application/json:
+        404:
+          body:
+            application/json:
+              example: |
+                {"message": "<<resourcePathName|!singularize>> not found" }       
+    put: 
+      description: Update a single <<resourcePathName | !singularize>>
+      responses:
+        200: 
+          body:
+            schema: <<resourcePathName | !singularize>>        
+    delete:
+      description: This method will *delete* an individual **<<resourcePathName | !singularize>>**
+      responses:
+        204:
