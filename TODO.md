@@ -7,3 +7,4 @@
 - [ ] start with the [Vins de Loire](http://www.vinsvaldeloire.fr/SiteGP/FR/)
 - [ ] Add a `millésime` / `vintage` entity: http://goo.gl/k7R0nS
 - [ ] Evaluate https://github.com/stanlemon/rest-bundle
+- [ ] Aires et produits AOC/AOP et IGP : https://www.data.gouv.fr/fr/datasets/aires-et-produits-aoc-aop-et-igp/ cf. https://www.data.gouv.fr/fr/organizations/institut-national-de-l-origine-et-de-la-qualite-inao/
