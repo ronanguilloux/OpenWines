@@ -7,3 +7,4 @@
 - [ ] Add a `millésime` / `vintage` entity: http://goo.gl/k7R0nS
 - [ ] Evaluate https://github.com/stanlemon/rest-bundle
 - [ ] grab vineyard data through [`landuse:vineyard` on OpenStreetMap](http://wiki.openstreetmap.org/wiki/Tag:landuse%3Dvineyard) (+ [see Proposed features/Winery](http://wiki.openstreetmap.org/wiki/Proposed_features/Winery)  + [a use case here](http://wiki.openstreetmap.org/wiki/FR:Tours/POIs_Touristiques)
+- [ ] Aires et produits AOC/AOP et IGP : https://www.data.gouv.fr/fr/datasets/aires-et-produits-aoc-aop-et-igp/ cf. https://www.data.gouv.fr/fr/organizations/institut-national-de-l-origine-et-de-la-qualite-inao/
