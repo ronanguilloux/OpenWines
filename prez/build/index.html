@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Prez</title>
+
+    <meta name="description" content="-- DESCRIPTION HERE --">
+    <meta name="author" content="ronan">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="css/highlight/styles/zenburn.css" id="highlight-theme">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <link rel="stylesheet" href="css/custom.css">
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+      <div class="slides"><section id="hello" class="slide">
+<h2>OpenWines!</h2><p><img src="images/opendata1.png" alt=""></p>
+<h3>Ouvrons les données du vin</h3><ul>
+<li>Prototype sur le Pays Nantais</li>
+<li>Consommateurs et acteurs pros</li>
+<li>Données libres et ouvertes, pour toujours</li>
+<li>Ouvert aux contributions : vignerons, start-ups, associations professionnelles</li>
+</ul>
+</section>
+<section id="sources" class="slide">
+<h3>Nos sources</h3><ul>
+<li>INAO, dataset des AOC et IGP, et leur localisation</li>
+<li><a href="http://data.gouv.fr">data.gouv.fr</a></li>
+<li><a href="http://agreste.agriculture.gouv.fr/">AGRESTE</a> </li>
+</ul>
+<p>Nous privilégions les données institutionnelles</p>
+<p>Nous souhaitons créer et enrichir des datasets</p>
+<p>Nous nous intéressons au Web Sémantique</p>
+</section>
+<section id="proto" class="slide">
+<h3>Notre prototype</h3><ul>
+<li><a href="https://github.com/ronanguilloux/OpenWines">API et / ou RDF</a></li>
+<li><a href="https://github.com/OpenWines/Resources/blob/master/mock-up/open-wines.pdf">mockups</a></li>
+<li><a href="https://lite5.framapad.org/p/hackgriculturevin">framapad</a></li>
+<li><a href="https://umap.openstreetmap.fr/en/map/openwine_33763#10/47.1743/-1.4989">Carte UMap (openStreetMap)</a></li>
+</ul>
+<p>Rejoignez-nous sur <a href="https://github.com/OpenWines">Github</a> !</p>
+</section>
+<section>
+
+</section></div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: Reveal.getQueryHash().transition || 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        //{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        //{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+        { src: 'plugin/notes/notes.js', async: true }
+      ]
+    });
+    </script>
+
+    <script src="js/dynamic-theme.js"></script><script src="js/custom.js"></script>
+
+  </body>
+</html>
