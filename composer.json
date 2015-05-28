@@ -20,11 +20,12 @@
         "pomm-project/model-manager": "2.0.*@dev",
         "pomm-project/cli": "2.0.*@dev",
         "pomm-project/pomm-symfony-bridge": "~2.0@dev",
-        "pomm-project/pomm-bundle": "2.0.*@dev"
+        "pomm-project/pomm-bundle": "2.0.*@dev",
+        "ml/json-ld": "1.*"
     },
     "require-dev": {
         "sensio/generator-bundle":     "~2.3",
-        "phpunit/phpunit":             "4.5.*",
+        "phpunit/phpunit":             "4.6.*",
         "squizlabs/php_codesniffer":   "2.0.x-dev",
         "sebastian/phpcpd":            "*",
         "phploc/phploc" :              "*",
